@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginRight="8dp"
-    android:visibility="invisible"
+    android:layout_marginRight="@dimen/fab_right_margin"
     tools:ignore="RtlHardcoded">
 
     <TextView
@@ -20,7 +19,6 @@
         layout="@layout/action_skittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:visibility="visible"/>
+        android:layout_gravity="end" />
 
 </FrameLayout>

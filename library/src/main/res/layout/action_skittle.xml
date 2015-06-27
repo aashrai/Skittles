@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="end"
-    android:layout_marginRight="8dp"
+    android:layout_marginRight="@dimen/fab_right_margin"
     app:fabSize="mini">
 
 </android.support.design.widget.FloatingActionButton>
