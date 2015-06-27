@@ -43,7 +43,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
                 .inflate(R.layout.skittle_container, this, false);
         addView(skittleContainer);
-        findViewById(R.id.skittle_main).setOnClickListener(this);
+        skittleContainer.findViewById(R.id.skittle_main).setOnClickListener(this);
 
     }
 
@@ -125,4 +125,5 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
     public void onAnimationRepeat(Animator animation) {
 
     }
+
 }

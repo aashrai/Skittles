@@ -4,14 +4,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import snow.skittles.Skittle;
+import snow.skittles.SkittleBuilder;
 import snow.skittles.SkittleLayout;
-import snow.skittles.Skittles;
+import snow.skittles.TextSkittle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SkittleBuilder.SkittleClickListener {
 
     SkittleLayout skittleLayout;
-    Skittles skittles;
+    SkittleBuilder skittleBuilder;
     int skittleCount = 1;
 
     @Override
@@ -19,25 +22,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-        skittles = new Skittles(this, skittleLayout);
+        skittleBuilder = new SkittleBuilder(this, skittleLayout);
+        skittleBuilder.setSkittleListener(this);
 
         addSkittles();
     }
 
     private void addSkittles() {
 
-        Skittles.Skittle skittle = new Skittles.Skittle(R.id.skittle_main + 1, getResources()
-                .getDrawable(R.drawable.ic_android_white_18dp));
-        skittles.addSkittle(skittle);
+        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_android_white_18dp));
+        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_android_white_18dp));
 
-        skittle = new Skittles.Skittle(R.id.skittle_main + 2, getResources()
-                .getDrawable(R.drawable.ic_android_white_18dp));
-        skittles.addSkittle(skittle);
-
-        Skittles.TextSkittle textSkittle = new Skittles.TextSkittle(R.id.skittle_main + 3, getResources()
+        TextSkittle textSkittle = skittleBuilder.makeTextSkittle(getResources()
                 .getDrawable(R.drawable.ic_android_white_18dp), "Android");
-        skittles.addTextSkittle(textSkittle);
-
+        textSkittle.setTextColor(R.color.material_blue_grey_900);
+        skittleBuilder.addTextSkittle(textSkittle);
     }
 
     @Override
@@ -60,5 +59,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSkittleClick(Skittle skittle) {
+        Toast.makeText(this, "Pressed " + skittle.getPosition(), Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onTextSkittleClick(TextSkittle textSkittle) {
+        Toast.makeText(this, "Pressed " + textSkittle.getPosition(), Toast.LENGTH_LONG).show();
+
     }
 }
