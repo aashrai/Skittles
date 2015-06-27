@@ -6,7 +6,6 @@ import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -62,9 +61,10 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
     public void onClick(View v) {
         View child;
         FastOutLinearInInterpolator interpolator = new FastOutLinearInInterpolator();
-        Log.d("Skittle Layout", "" + skittleContainer.getChildCount());
 
         if (flag == 0) {
+            ObjectAnimator.ofFloat(skittleContainer.findViewById(R.id.skittle_main)
+                    , "rotation", 0f, 45f).setDuration(185).start();
             flag = 1;
             yList.clear();
             for (int i = 0; i < skittleContainer.getChildCount(); i++) {
@@ -73,12 +73,15 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
                     yList.add(child.getY());
                     animator = ObjectAnimator.ofPropertyValuesHolder(child,
                             PropertyValuesHolder.ofFloat("Y", child.getY() + child.getMeasuredHeight() / 2, child.getY()),
-                            PropertyValuesHolder.ofFloat("alpha", 0, 1)).setDuration(200);
+                            PropertyValuesHolder.ofFloat("alpha", 0, 1)).setDuration(185);
+                    animator.setStartDelay((skittleContainer.getChildCount() - i) * 15);
                     animator.setInterpolator(interpolator);
                     animator.start();
                 }
             }
         } else if (flag == 1) {
+            ObjectAnimator.ofFloat(skittleContainer.findViewById(R.id.skittle_main)
+                    , "rotation", 45f, 0f).setDuration(185).start();
             flag = 0;
             for (int i = 0; i < skittleContainer.getChildCount(); i++) {
                 child = skittleContainer.getChildAt(i);
@@ -87,6 +90,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
                             PropertyValuesHolder.ofFloat("Y", child.getY() + child.getMeasuredHeight() / 2, child.getY()),
                             PropertyValuesHolder.ofFloat("alpha", 0, 1)).setDuration(200);
                     animator.setInterpolator(interpolator);
+                    animator.setStartDelay(i * 15);
                     animator.addListener(this);
                     animator.reverse();
                 }
@@ -106,6 +110,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         for (int i = 0; i < skittleContainer.getChildCount(); i++) {
             child = skittleContainer.getChildAt(i);
             if (child.getId() != R.id.skittle_main) {
+                child.setAlpha(0f);
                 child.setY(yList.get(i));
             }
         }
