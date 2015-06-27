@@ -42,6 +42,7 @@ public class SkittleBuilder {
         skittle.setOnClickListener(mSkittleClickListener);
         skittle.setPosition(skittleCount++);
         mSkittleLayout.addFab(skittle);
+
     }
 
 

@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
         TextSkittle textSkittle = skittleBuilder.makeTextSkittle(getResources()
                 .getDrawable(R.drawable.ic_android_white_18dp), "Android");
-        textSkittle.setTextColor(R.color.material_blue_grey_900);
+        textSkittle.setTextColor(R.color.material_deep_teal_200);
+        textSkittle.setText("Skittles");
         skittleBuilder.addTextSkittle(textSkittle);
     }
 
@@ -63,13 +64,24 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
     @Override
     public void onSkittleClick(Skittle skittle) {
-        Toast.makeText(this, "Pressed " + skittle.getPosition(), Toast.LENGTH_LONG).show();
+
+        switch (skittle.getPosition()) {
+            case 1:
+                Toast.makeText(this, "Skittle 1", Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                Toast.makeText(this, "Skittle 2", Toast.LENGTH_LONG).show();
+                break;
+        }
 
     }
 
     @Override
     public void onTextSkittleClick(TextSkittle textSkittle) {
-        Toast.makeText(this, "Pressed " + textSkittle.getPosition(), Toast.LENGTH_LONG).show();
 
+        switch (textSkittle.getPosition()) {
+            case 3:
+                Toast.makeText(this, "Skittle 3", Toast.LENGTH_LONG).show();
+        }
     }
 }
