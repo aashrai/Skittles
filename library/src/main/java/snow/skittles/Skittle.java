@@ -5,7 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 
 /**
- * Created by aashrai on 27/6/15.
+ *Simple extension of FloatingActionButton with some convenience methods
  */
 public class Skittle extends FloatingActionButton {
     private int position;

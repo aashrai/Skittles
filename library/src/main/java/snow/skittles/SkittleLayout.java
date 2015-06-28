@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**Add this as the root view of your layouts
- * Created by aashrai on 17/6/15.
+ *
  */
 public class SkittleLayout extends FrameLayout implements View.OnClickListener, Animator.AnimatorListener {
 

@@ -10,7 +10,7 @@ import android.view.View;
 
 /**
  * Utility class for managing the addition of skittles and click events
- * Created by aashrai on 26/6/15.
+ *
  */
 @SuppressWarnings("ALL")
 public class SkittleBuilder {
@@ -22,6 +22,9 @@ public class SkittleBuilder {
 
     private SkittleClickListener mListener;
 
+    /**
+     * Interface for click events
+     */
     public interface SkittleClickListener {
         void onSkittleClick(Skittle skittle);
 
@@ -46,6 +49,10 @@ public class SkittleBuilder {
 
     }
 
+    /**
+     * Call this method after makeTextSkittle and modifying the look of the skittle
+     * @param textSkittle
+     */
 
     public void addTextSkittle(@NonNull TextSkittle textSkittle) {
 
@@ -57,11 +64,11 @@ public class SkittleBuilder {
     }
 
     /**
-     * Call this method first while adding the text skittle,returns @link TextSkittle, which
+     * Call this method first while adding the text skittle
      * exposes rich methods for modifications
-     * @param drawable
-     * @param text
-     * @return @link TextSkittle
+     * @param drawable icon for the skittle
+     * @param text text displayed with the skittle
+     * @return
      */
     public TextSkittle makeTextSkittle(@Nullable Drawable drawable, @NonNull String text) {
 
@@ -93,8 +100,8 @@ public class SkittleBuilder {
     }
 
     /**
-     * Call this method for setting listener for the skittles
-     * @param mListener #SkittleClickListener
+     * Call this method for setting the click listener for the skittles
+     * @param mListener
      */
     public void setSkittleListener(@NonNull SkittleClickListener mListener) {
         this.mListener = mListener;

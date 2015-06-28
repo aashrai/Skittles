@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 /**Utility class for creating text skittle, exposes methods for modifying the look of the
  * text view, many more to come
- * Created by aashrai on 27/6/15.
+ *
  */
 public class TextSkittle {
 

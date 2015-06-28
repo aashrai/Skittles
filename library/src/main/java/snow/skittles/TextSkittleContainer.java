@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 /**
- * Created by aashrai on 27/6/15.
+ *
  */
 public class TextSkittleContainer extends FrameLayout {
 
