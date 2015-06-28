@@ -7,7 +7,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
+/**Utility class for creating text skittle, exposes methods for modifying the look of the
+ * text view, many more to come
  * Created by aashrai on 27/6/15.
  */
 public class TextSkittle {
@@ -17,7 +18,11 @@ public class TextSkittle {
     private Skittle skittle;
     private TextView textView;
 
-
+    /**
+     * Use this constructor for convenient addition of the text skittle
+     * @param context
+     * @param parent
+     */
     public TextSkittle(Context context, ViewGroup parent) {
         this.context = context;
         layout = (TextSkittleContainer) LayoutInflater.from(context)
@@ -26,6 +31,10 @@ public class TextSkittle {
         textView = (TextView) layout.getChildAt(0);
     }
 
+    /**
+     * Used internally, Use the above constructor in your activities
+     * @param textSkittleLayout
+     */
     public TextSkittle(TextSkittleContainer textSkittleLayout) {
 
         layout = textSkittleLayout;

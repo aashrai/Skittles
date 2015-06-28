@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 /**
+ * Utility class for managing the addition of skittles and click events
  * Created by aashrai on 26/6/15.
  */
 @SuppressWarnings("ALL")
@@ -55,6 +56,13 @@ public class SkittleBuilder {
 
     }
 
+    /**
+     * Call this method first while adding the text skittle,returns @link TextSkittle, which
+     * exposes rich methods for modifications
+     * @param drawable
+     * @param text
+     * @return @link TextSkittle
+     */
     public TextSkittle makeTextSkittle(@Nullable Drawable drawable, @NonNull String text) {
 
         textSkittle = new TextSkittle(context, mSkittleLayout.getSkittleContainer());
@@ -84,6 +92,10 @@ public class SkittleBuilder {
         return mListener;
     }
 
+    /**
+     * Call this method for setting listener for the skittles
+     * @param mListener #SkittleClickListener
+     */
     public void setSkittleListener(@NonNull SkittleClickListener mListener) {
         this.mListener = mListener;
     }

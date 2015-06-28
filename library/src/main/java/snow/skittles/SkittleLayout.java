@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**Add this as the root view of your layouts
  * Created by aashrai on 17/6/15.
  */
 public class SkittleLayout extends FrameLayout implements View.OnClickListener, Animator.AnimatorListener {
@@ -40,6 +40,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
 
     private void init() {
 
+        //Add the main FloatingActionButton by default
         skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
                 .inflate(R.layout.skittle_container, this, false);
         addView(skittleContainer);
@@ -49,6 +50,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
 
     public void addFab(View fab) {
 
+        //Add all button for at the same index for laying out the skittles vertically
         skittleContainer.addView(fab, 0);
     }
 
@@ -57,6 +59,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         return skittleContainer;
     }
 
+    //Needs refactoring
     @Override
     public void onClick(View v) {
         View child;
@@ -107,6 +110,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
     @Override
     public void onAnimationEnd(Animator animation) {
         View child;
+        //To place views at initial coordinates
         for (int i = 0; i < skittleContainer.getChildCount(); i++) {
             child = skittleContainer.getChildAt(i);
             if (child.getId() != R.id.skittle_main) {
