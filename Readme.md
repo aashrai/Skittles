@@ -61,8 +61,7 @@ skittleBuilder.addTextSkittle(textSkittle);
 textSkittle=skittleBuilder.makeTextSkittle(getResources().getDrawable(R.drawable.ic_add_white_18dp), "Boltons will die");
 skittleBuilder.addTextSkittle(textSkittle);
 
-textSkittle = skittleBuilder.makeTextSkittle(getResources()
-.getDrawable(R.drawable.ic_create_white_18dp), "Cleganebowl");
+textSkittle=skittleBuilder.makeTextSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp), "Cleganebowl");
 skittleBuilder.addTextSkittle(textSkittle);
 ```
 
@@ -78,6 +77,11 @@ textSkittle.setTextBackgroundColor() //Pass TextBackground Color
 ##Upcoming
 + Better support for animations
 + Option for adding skittles by xml (inspired by Navigation View)
-+ Test on various devices
++ Test on more devices
++ Upload to Maven Central
 
 **Currently in heavy dev, good enough for playing around**
+
+
+#Taste the rainbow
+![Skittles](art/Taste the rainbow.jpg)
