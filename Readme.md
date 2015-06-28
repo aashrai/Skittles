@@ -89,7 +89,7 @@ void onTextSkittleClick(TextSkittle textSkittle);
 ```
 
 Use `skittle.getPosition()` which return the position of the clicked
-skittle starting from **1**
+skittle starting from **1** and starting from **bottom**
 
 ```
 public void onSkittleClick(Skittle skittle) {
