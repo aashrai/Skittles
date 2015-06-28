@@ -2,6 +2,7 @@ package snow.skittlessample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
     SkittleLayout skittleLayout;
     SkittleBuilder skittleBuilder;
+    Toolbar toolbar;
     int skittleCount = 1;
 
     @Override
@@ -25,18 +27,25 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         skittleBuilder = new SkittleBuilder(this, skittleLayout);
         skittleBuilder.setSkittleListener(this);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         addSkittles();
     }
 
     private void addSkittles() {
 
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_android_white_18dp));
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_android_white_18dp));
-
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_link_white_18dp));
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_add_white_18dp));
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp));
         TextSkittle textSkittle = skittleBuilder.makeTextSkittle(getResources()
-                .getDrawable(R.drawable.ic_android_white_18dp), "Android");
-        textSkittle.setTextColor(R.color.material_deep_teal_200);
-        textSkittle.setText("Skittles");
+                .getDrawable(R.drawable.ic_link_white_18dp), "Add Link");
+        skittleBuilder.addTextSkittle(textSkittle);
+        textSkittle = skittleBuilder.makeTextSkittle(getResources()
+                .getDrawable(R.drawable.ic_add_white_18dp), "New Message");
+        skittleBuilder.addTextSkittle(textSkittle);
+        textSkittle = skittleBuilder.makeTextSkittle(getResources()
+                .getDrawable(R.drawable.ic_create_white_18dp), "Create Message");
         skittleBuilder.addTextSkittle(textSkittle);
     }
 
