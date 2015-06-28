@@ -117,7 +117,7 @@ public void onTextSkittleClick(TextSkittle textSkittle) {
 }
 ```
 
-See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)** for further guidance
+See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)** and **[JavaDoc](javadoc/index.html)** for further guidance
 
 ##Upcoming
 + Javadoc
