@@ -1,6 +1,6 @@
 #Skittles
 
-A simple,clean api for adding PushBullet style skittles to your app for more material design glory.
+A simple,clean api for adding PushBullet style skittles to your app for more material design glory.This library uses the FloatingActionButton provided in the android desing support library
 
 <img src="art/Skittle.gif" width=196 height=350/>
 <img src="art/TextSkittle.gif" width=196 height=350/>
