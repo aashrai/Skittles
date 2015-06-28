@@ -2,8 +2,8 @@
 
 A simple,clean api for adding PushBullet style skittles to your app for more material design glory.
 
-![Skittle](art/Skittle.gif)
-![TextSkittle](art/TextSkittle.gif)
+<img src="art/Skittle.gif" width=196 height=350/>
+<img src="art/TextSkittle.gif" width=196 height=350/>
 
 ##Guide
 
