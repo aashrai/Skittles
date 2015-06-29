@@ -2,8 +2,8 @@
 
 A simple,clean api for adding PushBullet style skittles to your app for more material design glory.This library uses the <a href="https://developer.android.com/reference/android/support/design/widget/FloatingActionButton.html">FloatingActionButton</a> provided in the android design support library
 
-<img src="art/Skittle.gif" width=196 height=350/>
-<img src="art/TextSkittle.gif" width=196 height=350/>
+<img src="art/Skittles.gif" width=196 height=350/>
+<img src="art/TextSkittles.gif" width=196 height=350/>
 
 ##Guide
 
@@ -28,6 +28,8 @@ android:layout_alignParentTop="true"
 android:background="?attr/colorPrimary"
 android:minHeight="?attr/actionBarSize" />
 
+...
+
 </snow.skittles.SkittleLayout>
 ```
 
@@ -37,7 +39,7 @@ Declare a [SkittleBuilder](library/src/main/java/snow/skittles/SkittleBuilder.ja
 
 ```
 SkittleLayout skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-SkittleBuilder skittleBuilder = new SkittleBuilder(this, skittleLayout);
+SkittleBuilder skittleBuilder = new SkittleBuilder(this, skittleLayout, false, R.color.material_deep_purple_500, R.color.material_deep_teal_500);
 
 ```
 
@@ -64,15 +66,6 @@ skittleBuilder.addTextSkittle(textSkittle);
 
 textSkittle=skittleBuilder.makeTextSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp), "Cleganebowl");
 skittleBuilder.addTextSkittle(textSkittle);
-```
-
-Sweet methods for modifying the look
-
-```
-textSkittle.setIcon() //Pass Drawable
-textSkittle.setTextColor() //Pass @ColorRes
-textSkittle.setTextBackground() //Pass Drawable
-textSkittle.setTextBackgroundColor() //Pass TextBackground Color
 ```
 
 Flexible callback for clicks:
@@ -120,7 +113,6 @@ public void onTextSkittleClick(TextSkittle textSkittle) {
 See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)** and **[JavaDoc](http://aashrairavooru.github.io/Skittles/)** for further guidance
 
 ##Upcoming
-+ Javadoc
 + Better support for animations
 + Option for adding skittles by xml (inspired by Navigation View)
 + Test on more devices
