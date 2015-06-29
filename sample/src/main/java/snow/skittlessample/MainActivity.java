@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
     Toolbar toolbar;
     int skittleCount = 1;
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
         skittleBuilder = new SkittleBuilder(this, skittleLayout);
         skittleBuilder.setSkittleListener(this);
+        skittleBuilder.setMainSkittleIcon(getResources().getDrawable(R.drawable.ic_android_white_18dp));
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,18 +37,18 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
     private void addSkittles() {
 
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_link_white_18dp));
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_add_white_18dp));
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp));
-//        TextSkittle textSkittle = skittleBuilder.makeTextSkittle(getResources()
-//                .getDrawable(R.drawable.ic_link_white_18dp), "Jon is alive");
-//        skittleBuilder.addTextSkittle(textSkittle);
-//        textSkittle = skittleBuilder.makeTextSkittle(getResources()
-//                .getDrawable(R.drawable.ic_add_white_18dp), "Boltons will die");
-//        skittleBuilder.addTextSkittle(textSkittle);
-//        textSkittle = skittleBuilder.makeTextSkittle(getResources()
-//                .getDrawable(R.drawable.ic_create_white_18dp), "Cleganebowl");
-//        skittleBuilder.addTextSkittle(textSkittle);
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_link_white_18dp));
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_add_white_18dp));
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp));
+        TextSkittle textSkittle = skittleBuilder.makeTextSkittle(getResources()
+                .getDrawable(R.drawable.ic_link_white_18dp), "Jon is alive");
+        skittleBuilder.addTextSkittle(textSkittle);
+        textSkittle = skittleBuilder.makeTextSkittle(getResources()
+                .getDrawable(R.drawable.ic_add_white_18dp), "Boltons will die");
+        skittleBuilder.addTextSkittle(textSkittle);
+        textSkittle = skittleBuilder.makeTextSkittle(getResources()
+                .getDrawable(R.drawable.ic_create_white_18dp), "Cleganebowl");
+        skittleBuilder.addTextSkittle(textSkittle);
     }
 
     @Override

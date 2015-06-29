@@ -7,8 +7,10 @@ import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -39,23 +41,67 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         init();
     }
 
+    @Override
+    public void addView(View child) {
+        super.addView(child);
+        addSkittleOnTop();
+
+    }
+
+    @Override
+    public void addView(View child, int index) {
+        super.addView(child, index);
+        addSkittleOnTop();
+    }
+
+    @Override
+    public void addView(View child, int width, int height) {
+        super.addView(child, width, height);
+        addSkittleOnTop();
+    }
+
+    @Override
+    public void addView(View child, ViewGroup.LayoutParams params) {
+        super.addView(child, params);
+        addSkittleOnTop();
+    }
+
+
+    private void addSkittleOnTop() {
+
+        skittleContainer = (LinearLayout) findViewById(R.id.skittle_container);
+        removeView(skittleContainer);
+
+        skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
+                .inflate(R.layout.skittle_container, this, false);
+        addViewInLayout(skittleContainer, -1, skittleContainer.getLayoutParams());
+        skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
+        skittleMain.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void addView(View child, int index, ViewGroup.LayoutParams params) {
+        super.addView(child, index, params);
+    }
+
     private void init() {
 
         //Add the main FloatingActionButton by default
         skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
                 .inflate(R.layout.skittle_container, this, false);
         addView(skittleContainer);
-        skittleMain = (FloatingActionButton) findViewById(R.id.skittle_main);
+        skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
         skittleMain.setOnClickListener(this);
 
     }
+
 
     public void addFab(View fab) {
 
         //Add all button for at the same index for laying out the skittles vertically
         skittleContainer.addView(fab, 0);
     }
-
 
     public LinearLayout getSkittleContainer() {
         return skittleContainer;
@@ -97,6 +143,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         animator.start();
     }
 
+
     private void toggleSkittles(View child, int index) {
 
         int duration = 200;
@@ -109,6 +156,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
 
         if (flag == 0) {
             animator.setStartDelay((skittleContainer.getChildCount() - index) * 15);
+            Log.d("Skittle Layout","Animation");
             animator.start();
         } else {
             animator.setStartDelay(index * 15);

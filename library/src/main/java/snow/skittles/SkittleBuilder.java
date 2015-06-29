@@ -4,17 +4,18 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 /**
  * Utility class for managing the addition of skittles and click events
- *
  */
 @SuppressWarnings("ALL")
 public class SkittleBuilder {
 
+    //TODO add an option for toggling animation of main skittle
     SkittleLayout mSkittleLayout;
     TextSkittle textSkittle;
     Context context;
@@ -36,9 +37,25 @@ public class SkittleBuilder {
         this.context = context;
     }
 
+    /**
+     * Call this to change the icon of the main skitlle ie the normal sized FloatingActionButton
+     * @param icon
+     */
+    public void setMainSkittleIcon(@NonNull Drawable icon) {
+
+        FloatingActionButton mSkittle = (FloatingActionButton) mSkittleLayout.findViewById(R.id.skittle_main);
+        if (icon != null)
+            mSkittle.setImageDrawable(icon);
+    }
+
+    /**
+     * Call this to add a simple skittle
+     *
+     * @param icon icon for the skittle
+     */
     public void addSkittle(@Nullable Drawable icon) {
 
-        Skittle skittle = (snow.skittles.Skittle) LayoutInflater.from(context)
+        Skittle skittle = (Skittle) LayoutInflater.from(context)
                 .inflate(R.layout.action_skittle, mSkittleLayout.getSkittleContainer(), false);
         skittle.setImageDrawable(icon);
         skittle.setAlpha(0f);
@@ -51,6 +68,7 @@ public class SkittleBuilder {
 
     /**
      * Call this method after makeTextSkittle and modifying the look of the skittle
+     *
      * @param textSkittle
      */
 
@@ -66,8 +84,9 @@ public class SkittleBuilder {
     /**
      * Call this method first while adding the text skittle
      * exposes rich methods for modifications
+     *
      * @param drawable icon for the skittle
-     * @param text text displayed with the skittle
+     * @param text     text displayed with the skittle
      * @return
      */
     public TextSkittle makeTextSkittle(@Nullable Drawable drawable, @NonNull String text) {
@@ -101,6 +120,7 @@ public class SkittleBuilder {
 
     /**
      * Call this method for setting the click listener for the skittles
+     *
      * @param mListener
      */
     public void setSkittleListener(@NonNull SkittleClickListener mListener) {
