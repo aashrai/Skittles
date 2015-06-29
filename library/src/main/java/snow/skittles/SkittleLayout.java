@@ -24,6 +24,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
 
     LinearLayout skittleContainer;
     FloatingActionButton skittleMain;
+    Boolean animatable;
     int flag = 0;
     List<Float> yList = new ArrayList<Float>();
 
@@ -69,8 +70,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
 
     private void addSkittleOnTop() {
 
-        skittleContainer = (LinearLayout) findViewById(R.id.skittle_container);
-        removeView(skittleContainer);
+        removeView(findViewById(R.id.skittle_container));
 
         skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
                 .inflate(R.layout.skittle_container, this, false);
@@ -78,11 +78,6 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
         skittleMain.setOnClickListener(this);
 
-    }
-
-    @Override
-    public void addView(View child, int index, ViewGroup.LayoutParams params) {
-        super.addView(child, index, params);
     }
 
     private void init() {
@@ -94,6 +89,14 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
         skittleMain.setOnClickListener(this);
 
+    }
+
+    public void setMainSkittleAnimatable(boolean animatable) {
+        this.animatable = animatable;
+    }
+
+    public boolean getMainSkittleAnimatable() {
+        return animatable;
     }
 
 
@@ -110,8 +113,9 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
     @Override
     public void onClick(View v) {
         View child;
-        toggleMainSkittle();
         int COUNT = skittleContainer.getChildCount();
+        if (getMainSkittleAnimatable())
+            toggleMainSkittle();
 
         if (flag == 0) {
             for (int i = 0; i < COUNT; i++) {
@@ -156,7 +160,7 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
 
         if (flag == 0) {
             animator.setStartDelay((skittleContainer.getChildCount() - index) * 15);
-            Log.d("Skittle Layout","Animation");
+            Log.d("Skittle Layout", "Animation");
             animator.start();
         } else {
             animator.setStartDelay(index * 15);

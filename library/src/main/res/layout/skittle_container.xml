@@ -15,5 +15,4 @@
         android:src="@drawable/ic_add_white_18dp"
         app:fabSize="normal" />
 
-
 </LinearLayout>
