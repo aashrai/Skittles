@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.support.annotation.ColorRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
@@ -20,6 +21,7 @@ import java.util.List;
 /**
  * Add this as the root view of your layouts
  */
+@SuppressWarnings("ALL")
 public class SkittleLayout extends FrameLayout implements View.OnClickListener, Animator.AnimatorListener {
 
     LinearLayout skittleContainer;
@@ -89,6 +91,10 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
         skittleMain.setOnClickListener(this);
 
+    }
+
+    public void setMainSkittleColor(@ColorRes int color) {
+        skittleMain.setBackgroundTintList(Utils.getColorStateList(color, getContext()));
     }
 
     public void setMainSkittleAnimatable(boolean animatable) {

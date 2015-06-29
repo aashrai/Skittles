@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-        skittleBuilder = new SkittleBuilder(this, skittleLayout, false, R.color.material_deep_teal_200);
+        skittleBuilder = new SkittleBuilder(this, skittleLayout, false,
+                R.color.material_deep_purple_500, R.color.material_deep_teal_500);
         skittleBuilder.setSkittleListener(this);
         skittleBuilder.setMainSkittleIcon(getResources().getDrawable(R.drawable.ic_android_white_18dp));
 

@@ -49,14 +49,36 @@ public class SkittleBuilder {
      * @param context        pass in the context of the activity
      * @param mSkittleLayout pass an instance of the skittle you have set as the root of your layouts
      * @param animatable     should the main Skittle have an animation
-     * @param color pass the color for the mini skittles
+     * @param color          pass the color for the mini skittles
      */
     public SkittleBuilder(@NonNull Context context, @NonNull SkittleLayout mSkittleLayout, boolean animatable
+            , @ColorRes @Nullable int color) {
+
+        setUp(context, mSkittleLayout, animatable, color);
+
+    }
+
+    /**
+     * @param context
+     * @param mSkittleLayout
+     * @param animatable
+     * @param miniSkittleColor
+     * @param mainSkittleColor pass the @ColorRes for the main Skittle
+     */
+    public SkittleBuilder(@NonNull Context context, @NonNull SkittleLayout mSkittleLayout, boolean animatable
+            , @ColorRes int miniSkittleColor, @ColorRes int mainSkittleColor) {
+
+        setUp(context, mSkittleLayout, animatable, miniSkittleColor);
+        mSkittleLayout.setMainSkittleColor(mainSkittleColor);
+    }
+
+    private void setUp(@NonNull Context context, @NonNull SkittleLayout mSkittleLayout, boolean animatable
             , @ColorRes @Nullable int color) {
         this.mSkittleLayout = mSkittleLayout;
         this.context = context;
         mSkittleLayout.setMainSkittleAnimatable(animatable);
         this.color = color;
+
     }
 
     /**
