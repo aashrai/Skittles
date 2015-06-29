@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,13 +15,13 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-/**Add this as the root view of your layouts
- *
+/**
+ * Add this as the root view of your layouts
  */
 public class SkittleLayout extends FrameLayout implements View.OnClickListener, Animator.AnimatorListener {
 
     LinearLayout skittleContainer;
-    ObjectAnimator animator;
+    FloatingActionButton skittleMain;
     int flag = 0;
     List<Float> yList = new ArrayList<Float>();
 
@@ -44,7 +45,8 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
                 .inflate(R.layout.skittle_container, this, false);
         addView(skittleContainer);
-        skittleContainer.findViewById(R.id.skittle_main).setOnClickListener(this);
+        skittleMain = (FloatingActionButton) findViewById(R.id.skittle_main);
+        skittleMain.setOnClickListener(this);
 
     }
 
@@ -59,45 +61,59 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         return skittleContainer;
     }
 
-    //Needs refactoring
     @Override
     public void onClick(View v) {
         View child;
-        FastOutLinearInInterpolator interpolator = new FastOutLinearInInterpolator();
+        toggleMainSkittle();
+        int COUNT = skittleContainer.getChildCount();
 
         if (flag == 0) {
-            ObjectAnimator.ofFloat(skittleContainer.findViewById(R.id.skittle_main)
-                    , "rotation", 0f, 45f).setDuration(185).start();
+            for (int i = 0; i < COUNT; i++) {
+                child = skittleContainer.getChildAt(i);
+                if (child.getId() != R.id.skittle_main) {
+                    if (yList.size() != COUNT - 1)
+                        yList.add(child.getY());
+                    toggleSkittles(child, i);
+                }
+            }
             flag = 1;
-            yList.clear();
-            for (int i = 0; i < skittleContainer.getChildCount(); i++) {
-                child = skittleContainer.getChildAt(i);
-                if (child.getId() != R.id.skittle_main) {
-                    yList.add(child.getY());
-                    animator = ObjectAnimator.ofPropertyValuesHolder(child,
-                            PropertyValuesHolder.ofFloat("Y", child.getY() + child.getMeasuredHeight() / 2, child.getY()),
-                            PropertyValuesHolder.ofFloat("alpha", 0, 1)).setDuration(185);
-                    animator.setStartDelay((skittleContainer.getChildCount() - i) * 15);
-                    animator.setInterpolator(interpolator);
-                    animator.start();
-                }
-            }
         } else if (flag == 1) {
-            ObjectAnimator.ofFloat(skittleContainer.findViewById(R.id.skittle_main)
-                    , "rotation", 45f, 0f).setDuration(185).start();
-            flag = 0;
-            for (int i = 0; i < skittleContainer.getChildCount(); i++) {
+            for (int i = 0; i < COUNT; i++) {
                 child = skittleContainer.getChildAt(i);
                 if (child.getId() != R.id.skittle_main) {
-                    animator = ObjectAnimator.ofPropertyValuesHolder(child,
-                            PropertyValuesHolder.ofFloat("Y", child.getY() + child.getMeasuredHeight() / 2, child.getY()),
-                            PropertyValuesHolder.ofFloat("alpha", 0, 1)).setDuration(200);
-                    animator.setInterpolator(interpolator);
-                    animator.setStartDelay(i * 15);
-                    animator.addListener(this);
-                    animator.reverse();
+                    toggleSkittles(child, i);
                 }
             }
+            flag = 0;
+        }
+    }
+
+    private void toggleMainSkittle() {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(skittleMain
+                , "rotation", 0f, 45f).setDuration(200);
+
+        if (flag == 1)
+            animator.setFloatValues(45f, 0f);
+        animator.start();
+    }
+
+    private void toggleSkittles(View child, int index) {
+
+        int duration = 200;
+        FastOutLinearInInterpolator interpolator = new FastOutLinearInInterpolator();
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(child,
+                PropertyValuesHolder.ofFloat("Y", child.getY() + child.getMeasuredHeight() / 2, child.getY()),
+                PropertyValuesHolder.ofFloat("alpha", 0, 1)).setDuration(duration);
+        animator.setInterpolator(interpolator);
+
+        if (flag == 0) {
+            animator.setStartDelay((skittleContainer.getChildCount() - index) * 15);
+            animator.start();
+        } else {
+            animator.setStartDelay(index * 15);
+            animator.addListener(this);
+            animator.reverse();
         }
     }
 
