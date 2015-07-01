@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
     private void addSkittles() {
 
         //For adding normal Skittles
-//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.lannister_icon), R.color.lannister);
-//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.barratheon_icon), R.color.barratheon);
-//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.stark_icon), R.color.stark);
+//        skittleBuilder.addSkittle(R.drawable.lannister_icon, R.color.lannister);
+//        skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
+//        skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
 
         //Adding Text Skittles
         TextSkittle textSkittle = skittleBuilder.makeTextSkittle
