@@ -1,11 +1,13 @@
 package snow.skittlessample;
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import snow.skittles.Skittle;
 import snow.skittles.SkittleBuilder;
@@ -18,6 +20,9 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
     SkittleLayout skittleLayout;
     SkittleBuilder skittleBuilder;
     Toolbar toolbar;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    TextView tvBackground, tvHistory;
+    ImageView backdrop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +30,15 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         setContentView(R.layout.activity_main);
         skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
         skittleBuilder = new SkittleBuilder(this, skittleLayout, false,
-                R.color.material_deep_purple_500, R.color.material_deep_teal_500);
+                R.color.material_deep_purple_500);
         skittleBuilder.setSkittleListener(this);
-        skittleBuilder.setMainSkittleIcon(getResources().getDrawable(R.drawable.ic_android_white_18dp));
 
+        tvBackground = (TextView) findViewById(R.id.tvBackground);
+        tvHistory = (TextView) findViewById(R.id.tvHistory);
+        backdrop = (ImageView) findViewById(R.id.backdrop);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+//        collapsingToolbarLayout.setTitle(getResources().getString(R.string.house_stark));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -37,18 +47,30 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
     private void addSkittles() {
 
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_link_white_18dp));
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_add_white_18dp));
-        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp));
-//        TextSkittle textSkittle = skittleBuilder.makeTextSkittle(getResources()
-//                .getDrawable(R.drawable.ic_link_white_18dp), "Jon is alive");
-//        skittleBuilder.addTextSkittle(textSkittle);
-//        textSkittle = skittleBuilder.makeTextSkittle(getResources()
-//                .getDrawable(R.drawable.ic_add_white_18dp), "Boltons will die");
-//        skittleBuilder.addTextSkittle(textSkittle);
-//        textSkittle = skittleBuilder.makeTextSkittle(getResources()
-//                .getDrawable(R.drawable.ic_create_white_18dp), "Cleganebowl");
-//        skittleBuilder.addTextSkittle(textSkittle);
+        //For adding normal Skittles
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.lannister_icon), R.color.lannister);
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.barratheon_icon), R.color.barratheon);
+//        skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.stark_icon), R.color.stark);
+
+        //Adding Text Skittles
+        TextSkittle textSkittle = skittleBuilder.makeTextSkittle
+                (R.drawable.lannister_icon, getResources().getString(R.string.house_lannister), R.color.lannister);
+        textSkittle.setTextBackgroundColor(R.color.textBackground);
+        textSkittle.setTextColor(android.R.color.black);
+        skittleBuilder.addTextSkittle(textSkittle);
+
+        textSkittle = skittleBuilder.makeTextSkittle
+                (R.drawable.barratheon_icon, getResources().getString(R.string.house_barratheon), R.color.barratheon);
+        textSkittle.setTextBackgroundColor(R.color.textBackground);
+        textSkittle.setTextColor(android.R.color.black);
+        skittleBuilder.addTextSkittle(textSkittle);
+
+        textSkittle = skittleBuilder.makeTextSkittle
+                (R.drawable.stark_icon, getResources().getString(R.string.house_stark), R.color.stark);
+        textSkittle.setTextBackgroundColor(R.color.textBackground);
+        textSkittle.setTextColor(android.R.color.black);
+        skittleBuilder.addTextSkittle(textSkittle);
+
     }
 
     @Override
@@ -78,11 +100,19 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
         switch (skittle.getPosition()) {
             case 1:
-                Toast.makeText(this, "Skittle 1", Toast.LENGTH_LONG).show();
+
+                setUpHouse(R.string.lannister_background, R.string.lannister_history,
+                        R.string.house_lannister, R.drawable.house_lannister);
                 break;
             case 2:
-                Toast.makeText(this, "Skittle 2", Toast.LENGTH_LONG).show();
+
+                setUpHouse(R.string.barratheon_background, R.string.barratheon_history,
+                        R.string.house_barratheon, R.drawable.house_barratheon);
                 break;
+            case 3:
+
+                setUpHouse(R.string.stark_background, R.string.stark_history,
+                        R.string.house_stark, R.drawable.house_stark);
         }
 
     }
@@ -91,8 +121,30 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
     public void onTextSkittleClick(TextSkittle textSkittle) {
 
         switch (textSkittle.getPosition()) {
+            case 1:
+
+                setUpHouse(R.string.lannister_background, R.string.lannister_history,
+                        R.string.house_lannister, R.drawable.house_lannister);
+                break;
+            case 2:
+
+                setUpHouse(R.string.barratheon_background, R.string.barratheon_history,
+                        R.string.house_barratheon, R.drawable.house_barratheon);
+                break;
             case 3:
-                Toast.makeText(this, "Skittle 3", Toast.LENGTH_LONG).show();
+
+                setUpHouse(R.string.stark_background, R.string.stark_history,
+                        R.string.house_stark, R.drawable.house_stark);
         }
+
+    }
+
+    private void setUpHouse(int background, int history, int title, int coatOfArms) {
+
+        tvBackground.setText(getResources().getString(background));
+        tvHistory.setText(getResources().getString(history));
+//        toolbar.setTitle("Changed");
+        backdrop.setImageDrawable(getResources().getDrawable(coatOfArms));
+
     }
 }
