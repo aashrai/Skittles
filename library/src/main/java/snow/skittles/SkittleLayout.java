@@ -4,7 +4,10 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
@@ -12,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -22,12 +24,12 @@ import java.util.List;
  * Add this as the root view of your layouts
  */
 @SuppressWarnings("ALL")
-public class SkittleLayout extends FrameLayout implements View.OnClickListener, Animator.AnimatorListener {
+public class SkittleLayout extends CoordinatorLayout implements View.OnClickListener, Animator.AnimatorListener {
 
     LinearLayout skittleContainer;
     FloatingActionButton skittleMain;
     Boolean animatable;
-    int flag = 0;
+    int flag = 0, color;
     List<Float> yList = new ArrayList<Float>();
 
     public SkittleLayout(Context context) {
@@ -36,41 +38,47 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
 
     public SkittleLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(attrs);
     }
 
     public SkittleLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(attrs);
     }
 
     @Override
     public void addView(View child) {
         super.addView(child);
-        addSkittleOnTop();
+        if (getChildCount() != 1)
+            addSkittleOnTop();
 
     }
 
     @Override
     public void addView(View child, int index) {
         super.addView(child, index);
-        addSkittleOnTop();
+        if (getChildCount() != 1)
+            addSkittleOnTop();
     }
 
     @Override
     public void addView(View child, int width, int height) {
         super.addView(child, width, height);
-        addSkittleOnTop();
+        if (getChildCount() != 1)
+            addSkittleOnTop();
     }
 
     @Override
     public void addView(View child, ViewGroup.LayoutParams params) {
         super.addView(child, params);
-        addSkittleOnTop();
+        if (getChildCount() != 1)
+            addSkittleOnTop();
     }
 
 
     private void addSkittleOnTop() {
+
+        Drawable drawable = skittleMain.getDrawable();
 
         removeView(findViewById(R.id.skittle_container));
 
@@ -78,11 +86,14 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
                 .inflate(R.layout.skittle_container, this, false);
         addViewInLayout(skittleContainer, -1, skittleContainer.getLayoutParams());
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
+
+        setMainSkittleColor(color);
+        skittleMain.setImageDrawable(drawable);
         skittleMain.setOnClickListener(this);
 
     }
 
-    private void init() {
+    private void init(AttributeSet attrs) {
 
         //Add the main FloatingActionButton by default
         skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
@@ -91,7 +102,19 @@ public class SkittleLayout extends FrameLayout implements View.OnClickListener, 
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
         skittleMain.setOnClickListener(this);
 
+        TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.SkittleLayout);
+
+        try {
+            color = array.getResourceId(R.styleable.SkittleLayout_mainSkittleColor, 0);
+            setMainSkittleColor(color);
+            Drawable drawable = array.getDrawable(R.styleable.SkittleLayout_mainSkittleIcon);
+            skittleMain.setImageDrawable(drawable);
+        } finally {
+            array.recycle();
+        }
+
     }
+
 
     public void setMainSkittleColor(@ColorRes int color) {
         skittleMain.setBackgroundTintList(Utils.getColorStateList(color, getContext()));

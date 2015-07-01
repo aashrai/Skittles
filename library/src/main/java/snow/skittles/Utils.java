@@ -25,4 +25,14 @@ public class Utils {
         };
         return new ColorStateList(states, colors);
     }
+
+    public static ColorStateList getParsedColorStateList(int color) {
+        int[][] states = new int[][]{
+                new int[]{}
+        };
+        int[] colors = new int[]{
+                color,
+        };
+        return new ColorStateList(states, colors);
+    }
 }
