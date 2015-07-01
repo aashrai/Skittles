@@ -1,6 +1,55 @@
 <resources>
     <string name="app_name">SkittlesSample</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <color name="material_deep_purple_500">#673ab7</color>
+    <color name="material_deep_teal_500">#009688</color>
+    <color name="lannister">#ec4d4d</color>
+    <color name="stark">#656c75</color>
+    <color name="barratheon">#d7c137</color>
+
+    <string name="card_title1">Background</string>
+    <string name="card_title2">History</string>
+
+    <!--House Stark-->
+    <string name="house_stark">House Stark</string>
+    <string name="stark_background">House Stark of Winterfell is one of the Great Houses of Westeros and the principal noble house of the North; many lesser houses are sworn to them. In days of old they ruled as Kings of Winter, but since the Wars of Conquest by House Targaryen they have been Wardens of the North. Their seat, Winterfell, is an ancient castle renowned for its strength.
+
+Their sigil is a grey direwolf racing across a field of white, and their words are "Winter is Coming", one of only a few house mottoes to be a warning rather than a boast.[1] Members of the family tend to be lean of build and long of face, with dark brown hair and grey eyes. Several of the POV characters of A Song of Ice and Fire are members of House Stark.
+
+Aside from the Karstarks of Karhold, the Starks of Winterfell may have distant relatives elsewhere in the North, possibly in White Harbor and Barrowton.[2] Some younger Starks have also held vassal holdfasts for the lords of Winterfell.[3] </string>
+    <string name="stark_history">
+        The Starks are an ancient house descended from Bran the Builder, a legendary figure from the Age of Heroes said to have raised their ancestral home at Winterfell thousands of years in the past, as well as the Wall. They are descendants of the First Men[1] and still follow some of their ancient traditions and the old gods of the forest. The Starks were Kings of Winter in the North for thousands of years from the Age of Heroes, possibly beginning with Bran the Builder. Ever since Bran constructed the Wall, the Starks have been friends of the Night\'s Watch, and have manned the Wall for thousands of years. The Night\'s King, the attainted 13th Lord Commander of the Night\'s Watch, is said to have been a Stark, among his many possible origins. The Starks also helped repel several major wildling invasions, such as when they and their Umber bannermen defeated the Kings-Beyond-the-Wall like the brothers Gendel and Gorne, as well as Bael the Bard, who both sired and fought a Stark.
+
+The ancient Starks gradually defeated rival kings, such as the Barrow Kings to their south and the Red Kings to their east.[4] For several millennia, the Starks were not the uncontested Kings in the North, but their primary antagonists, the Boltons of the Dreadfort, swore fealty some 1,000 years ago, ending their flesh-flaying ways. Meanwhile, King Jon Stark drove pirates from the White Knife, and the Wolf\'s Den was built at its mouth. This stronghold was often granted to sons and grandsons of the King in the North; one such branch, the Greystarks, was extinguished after allying with the Boltons against the Starks.[5] The Wolf\'s Den was eventually granted to the Manderlys, a house exiled from the Reach and taken in by the Starks. The Manderlys developed the city of White Harbor around the castle.[6][7] King Jon\'s son, Rickard, defeated the Marsh King and married his daughter, bringing the Neck into Winterfell\'s realm under the lordship of House Reed. The Karstarks were founded when Karlon Stark, brother to the reigning king, helped crush a rebel lord and was granted a keep for his service. Finally, the Mormonts were granted Bear Island when King Rodrik Stark won it from the ironborn in a wrestling match. The Starks fought the Arryns of the Vale after the Rape of the Three Sisters, eventually ceding control of the islands.[8]
+    </string>
+
+    <!--House Lannister-->
+    <string name="house_lannister">House Lannister</string>
+    <string name="lannister_background">House Lannister of Casterly Rock is one of the Great Houses of Seven Kingdoms, and the principal house of the westerlands. Their seat is Casterly Rock, though another branch exists that is based in nearby Lannisport. Their sigil is a golden lion on a field of crimson.[1] Their official motto is "Hear Me Roar!" However, their unofficial motto, equally well known, is "A Lannister always pays his debts."[2][3] The Warden of the West is a Lannister by tradition.
+
+Fair-haired, tall, and handsome, the Lannisters are the blood of Andal adventurers who carved out a mighty kingdom in the western hills and valleys. Through the female line they boast of descent from Lann the Clever, the legendary trickster of the Age of Heroes who tricked the members of House Casterly into giving him Casterly Rock[4] during the era of the First Men.[5]
+
+The Lannisters reigned as Kings of the Rock until they fell to the Targaryen conquest, but were allowed to remain the liege lords of the westerlands. The House had fallen on hard times during the rule of Lord Tytos, but was restored to its former glory by Lord Tywin. His daughter Cersei is the queen of King Robert I Baratheon, while her twin Ser Jaime is a knight of Robert\'s Kingsguard. Members of the family tend to have golden hair and emerald green eyes. </string>
+    <string name="lannister_history">The Lannisters suddenly appear as First Men in historical records of the Age of Heroes, ruling large portions of the westerlands from Casterly Rock just as the Casterlys vanished from the chronicles. They claim descent from Lann the Clever, the legendary figure who tricked the Casterlys from their seat, Casterly Rock.[5]
+
+According to a semi-canon source, members of lesser branches of the family left Casterly Rock and developed a nearby village into the city of Lannisport, forming House Lannister of Lannisport. Meanwhile, the Lannisters of Casterly Rock grew to become Kings of the Rock.[6] The first known King of the Rock was Loreon I Lannister, although Lann the Clever has posthumously been called by the same title.[5] </string>
+
+    <!--House Barratheon-->
+    <string name="house_barratheon">House Barratheon</string>
+    <string name="barratheon_background">House Baratheon of Storm\'s End is one of the Great Houses of Westeros, and is the principal house in the stormlands, which they rule as Lords Paramount of the Stormlands. Their seat, Storm\'s End, is an ancient castle raised by the Storm Kings from the now-extinct House Durrandon. The Baratheon sigil is a crowned black stag on a field of gold.[1] Members of the family tend to be tall and powerfully built, with black hair and blue eyes, as well as strong, square jawlines. They are known for their mercurial tempers, and their words are "Ours is the Fury".
+
+After Robert\'s Rebellion, House Baratheon split into three branches: Lord Robert Baratheon was crowned King and took residence at King\'s Landing, thereby creating House Baratheon of King\'s Landing. Robert gave the seat of Dragonstone to his younger brother, Stannis, creating House Baratheon of Dragonstone. Robert\'s youngest brother, Renly, became the Lord of Storm\'s End, continuing House Baratheon of Storm\'s End. </string>
+    <string name="barratheon_history">House Baratheon is the youngest of the great houses, tracing its descent from Orys Baratheon, one of Aegon I Targaryen\'s fiercest generals, and rumored to be his bastard brother. Through the female line, the Baratheons are descended from the Storm Kings, as Orys slew Argilac the Arrogant, last of the Storm Kings, and married his daughter Argella Durrandon. Orys adopted the sigil and words of his wife\'s ancestral line.[2] The line of the Storm Kings dates back to the Age of Heroes when their kingdom was founded by King Durran I "Godsgrief", a legendary hero.
+
+Baratheon support for the Targaryens was initially strong. A knight of the House was elevated to the Kingsguard, saving the life of King Aenys I Targaryen during the Faith Militant uprising.
+
+During the Dance of the Dragons, Lord Borros Baratheon sided the House with Aegon II Targaryen and the greens despite his late father Boremund\'s support of the blacks and relation to Rhaenys Targaryen (through Jocelyn Baratheon).[3] There was talk of one of Borros\'s daughters wedding Prince Aemond Targaryen, a green prince, but it is unknown if this occurred before the prince\'s death.
+
+During the First Blackfyre Rebellion, the Baratheons remained loyal to the Targaryen dynasty, providing much of the force commanded by Prince Baelor Targaryen at the decisive Battle of the Redgrass Field.
+
+Nine years before the tourney at Ashford Meadow, Lord Baratheon held a tourney to celebrate the birth of his grandson. Ser Lyonel Baratheon, called the Laughing Storm, participated in the Ashford tourney and fought on the side of Ser Duncan the Tall during a trial of seven.
+
+Princess Rhaelle Targaryen, daughter of Aegon V Targaryen, married into the House and birthed Lord Steffon Baratheon, continuing the close ties between the dragon and the stag. Prince Rhaegar Targaryen defeated Lord Steffon Baratheon in a tourney at Storm\'s End that was eventually won by Ser Barristan Selmy. Lord Steffon also went on a journey across the narrow sea to find a bride for Prince Rhaegar, a voyage that would be his last. </string>
 </resources>
+
