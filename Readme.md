@@ -3,7 +3,7 @@
 A simple,clean api for adding PushBullet style skittles to your app for more material design glory.This library uses the <a href="https://developer.android.com/reference/android/support/design/widget/FloatingActionButton.html">FloatingActionButton</a> provided in the android design support library
 
 <img src="art/Skittle.gif" width=196 height=350/>
-<img src="art/TextSkittle.gif" width=196 height=350/>
+<img src="art/Skittle.gif" width=196 height=350/>
 
 ##Guide
 
@@ -14,20 +14,22 @@ Use
 
 ```
 <snow.skittles.SkittleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/skittleLayout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+android:fitsSystemWindows="true"
+app:mainSkittleColor="@color/material_deep_teal_500"
+app:mainSkittleIcon="@drawable/ic_android_white_18dp"
 tools:context=".MainActivity">
 
-<android.support.v7.widget.Toolbar
-android:id="@+id/toolbar"
+<android.support.design.widget.AppBarLayout
+android:id="@+id/appbar"
 android:layout_width="match_parent"
-android:layout_height="?attr/actionBarSize"
-android:layout_alignParentTop="true"
-android:background="?attr/colorPrimary"
-android:minHeight="?attr/actionBarSize" />
-
+android:layout_height="@dimen/appBarMaxHeight"
+android:fitsSystemWindows="true"
+android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 ...
 
 </snow.skittles.SkittleLayout>
@@ -48,24 +50,20 @@ Now for the fun part
 Add skittles to your activity/fragment
 
 ```
-skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_link_white_18dp));
-
-skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_add_white_18dp));
-
-skittleBuilder.addSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp));
+skittleBuilder.addSkittle(R.drawable.lannister_icon, R.color.lannister);
+skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
+skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
 ```
 
 A bit more work for adding [Text Skittle](library/src/main/java/snow/skittles/TextSkittle.java)
 
 ```
-TextSkittle textSkittle = skittleBuilder.makeTextSkittle(getResources().getDrawable(R.drawable.ic_link_white_18dp), "Jon is alive");
+TextSkittle textSkittle = skittleBuilder.makeTextSkittle
+(R.drawable.lannister_icon, getResources().getString(R.string.house_lannister), R.color.lannister);
+textSkittle.setTextBackgroundColor(R.color.textBackground);
+textSkittle.setTextColor(android.R.color.black);
 skittleBuilder.addTextSkittle(textSkittle);
 
-textSkittle=skittleBuilder.makeTextSkittle(getResources().getDrawable(R.drawable.ic_add_white_18dp), "Boltons will die");
-skittleBuilder.addTextSkittle(textSkittle);
-
-textSkittle=skittleBuilder.makeTextSkittle(getResources().getDrawable(R.drawable.ic_create_white_18dp), "Cleganebowl");
-skittleBuilder.addTextSkittle(textSkittle);
 ```
 
 Flexible callback for clicks:
@@ -104,13 +102,22 @@ Similarly for [Text Skittle](library/src/main/java/snow/skittles/TextSkittle.jav
 public void onTextSkittleClick(TextSkittle textSkittle) {
 
   switch (textSkittle.getPosition()) {
-    case 3:
-    Toast.makeText(this, "Skittle 3", Toast.LENGTH_LONG).show();
+    case 1:
+    Toast.makeText(this, "Skittle 1", Toast.LENGTH_LONG).show();
+    break;
+    case 2:
+    Toast.makeText(this, "Skittle 2", Toast.LENGTH_LONG).show();
+    break;
   }
 }
 ```
 
 See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)** and **[JavaDoc](http://aashrairavooru.github.io/Skittles/)** for further guidance
+
+##Sample Screenshots
+<img src="art/Sample1.png" width=196 height=350/>
+<img src="art/Sample2.png" width=196 height=350/>
+<img src="art/Sample3.png" width=196 height=350/>
 
 ##Upcoming
 + Better support for animations
