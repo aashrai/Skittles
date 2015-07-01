@@ -4,8 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
-    <color name="material_deep_purple_500">#673ab7</color>
-    <color name="material_deep_teal_500">#009688</color>
+
 
     <item name="backgroundContainer" type="id" />
 </resources>

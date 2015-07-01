@@ -98,11 +98,24 @@ public class SkittleBuilder {
      *
      * @param icon
      */
-    public void addSkittle(@NonNull Drawable icon) {
+    public void addSkittle(@NonNull int icon) {
 
+
+        mSkittleLayout.addFab(setUpMiniSkittle(icon));
+
+    }
+
+    public void addSkittle(@NonNull int icon, @ColorRes int color) {
+
+        Skittle skittle = setUpMiniSkittle(icon);
+        skittle.setBackgroundTintList(Utils.getColorStateList(color, context));
+        mSkittleLayout.addFab(skittle);
+    }
+
+    private Skittle setUpMiniSkittle(int icon) {
         Skittle skittle = (Skittle) LayoutInflater.from(context)
                 .inflate(R.layout.action_skittle, mSkittleLayout.getSkittleContainer(), false);
-        skittle.setImageDrawable(icon);
+        skittle.setImageDrawable(context.getResources().getDrawable(icon));
         skittle.setAlpha(0f);
 
         if (color != null) {
@@ -111,8 +124,8 @@ public class SkittleBuilder {
 
         skittle.setOnClickListener(mSkittleClickListener);
         skittle.setPosition(skittleCount++);
-        mSkittleLayout.addFab(skittle);
 
+        return skittle;
     }
 
 
@@ -137,19 +150,29 @@ public class SkittleBuilder {
      * exposes rich methods for modifications,follow with a
      * call to @see #addTextSkittle(TextSkittle)
      *
-     * @param drawable icon for the skittle
-     * @param text     text displayed with the skittle
+     * @param icon
+     * @param text
      * @return
      */
-    public TextSkittle makeTextSkittle(@Nullable Drawable drawable, @NonNull String text) {
+    public TextSkittle makeTextSkittle(@Nullable int icon, @NonNull String text) {
 
         textSkittle = new TextSkittle(context, mSkittleLayout.getSkittleContainer());
-        textSkittle.setIcon(drawable);
+        textSkittle.setIcon(context.getResources().getDrawable(icon));
         textSkittle.setText(text);
         textSkittle.setSkittleColor(color);
 
         return textSkittle;
     }
+
+    public TextSkittle makeTextSkittle(@Nullable int icon, @NonNull String text, @ColorRes int color) {
+
+
+        textSkittle = makeTextSkittle(icon, text);
+        textSkittle.setSkittleColor(color);
+
+        return textSkittle;
+    }
+
 
     View.OnClickListener mSkittleClickListener = new View.OnClickListener() {
         @Override
