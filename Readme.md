@@ -3,9 +3,9 @@
 A simple,clean api for adding PushBullet style skittles to your app for more material design glory.This library uses the <a href="https://developer.android.com/reference/android/support/design/widget/FloatingActionButton.html">FloatingActionButton</a> provided in the android design support library
 
 <img src="art/Skittle.gif" width=196 height=350/>
-<img src="art/Skittle.gif" width=196 height=350/>
+<img src="art/TextSkittle.gif" width=196 height=350/>
 
-##Guide
+##Guide ([Sample](sample/src/main/java/snow/skittlessample/MainActivity.java))
 
 First some housekeeping code:
 
@@ -109,6 +109,13 @@ public void onTextSkittleClick(TextSkittle textSkittle) {
     Toast.makeText(this, "Skittle 2", Toast.LENGTH_LONG).show();
     break;
   }
+}
+```
+
+##Gradle
+```
+dependencies{
+compile 'com.rlj.library:skittles:0.0.1-beta'
 }
 ```
 
