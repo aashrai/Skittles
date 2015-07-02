@@ -130,8 +130,7 @@ See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)**
 ##Upcoming
 + Better support for animations
 + Option for adding skittles by xml (inspired by Navigation View)
-+ Test on more devices
-+ Upload to Maven Central
++ Better support for most versions
 
 **Currently in heavy dev, good enough for playing around**
 
