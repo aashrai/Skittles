@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<snow.skittles.Skittle xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:layout_marginRight="@dimen/fab_right_margin"
+    app:fabSize="mini">
+
+</snow.skittles.Skittle>

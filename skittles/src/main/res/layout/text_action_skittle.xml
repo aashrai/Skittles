@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<snow.skittles.TextSkittleContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right|end"
+    android:layout_marginRight="@dimen/fab_right_margin"
+    tools:ignore="RtlHardcoded">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="70dp"
+        android:text="Action Skittle"
+        android:textSize="14sp"
+        tools:ignore="HardcodedText" />
+
+    <include
+        layout="@layout/action_skittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end" />
+
+</snow.skittles.TextSkittleContainer>
