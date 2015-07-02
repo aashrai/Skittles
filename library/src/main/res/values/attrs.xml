@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="SkittleLayout">
-        <attr name="mainSkittleColor" format="color|reference" />
-        <attr name="mainSkittleIcon" format="integer" />
-    </declare-styleable>
-</resources>
