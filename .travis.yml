@@ -3,7 +3,11 @@ android:
   components:
     - build-tools-22.0.1
     - android-21
+    - sysimg-21
     - extra-android-m2repository
+  licenses:
+    - android-sdk-license-[0-9a-f]{8}
+    - '.*intel.+'
 
 script:
    - ./gradlew build :sample:connectedCheck
