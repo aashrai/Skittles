@@ -76,6 +76,9 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     }
 
 
+    /**
+     * Utility method called after addView to ensure the skittle container is on top
+     */
     private void addSkittleOnTop() {
 
         Drawable drawable = skittleMain.getDrawable();
@@ -130,8 +133,10 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
 
 
     public void addFab(View fab) {
-
         //Add all button for at the same index for laying out the skittles vertically
+
+        if (fab.getTag().equals("miniSkittle"))
+            fab.setTag("Skittle " + skittleContainer.getChildCount());
         skittleContainer.addView(fab, 0);
     }
 
@@ -152,6 +157,9 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
                 if (child.getId() != R.id.skittle_main) {
                     if (yList.size() != COUNT - 1)
                         yList.add(child.getY());
+
+                    child.setVisibility(VISIBLE);
+                    toggleSkittleClick(child, true);
                     toggleSkittles(child, i);
                 }
             }
@@ -160,6 +168,8 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
             for (int i = 0; i < COUNT; i++) {
                 child = skittleContainer.getChildAt(i);
                 if (child.getId() != R.id.skittle_main) {
+                    child.setVisibility(VISIBLE);
+                    toggleSkittleClick(child, true);
                     toggleSkittles(child, i);
                 }
             }
@@ -198,6 +208,20 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
         }
     }
 
+    /**
+     * Used to set wether the skittle should be clickable or not
+     *
+     * @param v
+     * @param clickability
+     */
+    private void toggleSkittleClick(View v, boolean clickability) {
+
+        if (v.getTag().equals(getResources().getString(R.string.text_skittle_tag)))
+            ((TextSkittleContainer) v).getSkittle().setClickability(clickability);
+        else
+            ((Skittle) v).setClickability(clickability);
+    }
+
 
     @Override
     public void onAnimationStart(Animator animation) {
@@ -213,6 +237,8 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
             if (child.getId() != R.id.skittle_main) {
                 child.setAlpha(0f);
                 child.setY(yList.get(i));
+                toggleSkittleClick(child, false);
+                child.setVisibility(GONE);
             }
         }
     }

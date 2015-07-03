@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="end"
     android:layout_marginRight="@dimen/fab_right_margin"
+    android:tag="miniSkittle"
     app:fabSize="mini">
 
 </snow.skittles.Skittle>

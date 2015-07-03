@@ -5,10 +5,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 
 /**
- *Simple extension of FloatingActionButton with some convenience methods
+ * Simple extension of FloatingActionButton with some convenience methods
  */
 public class Skittle extends FloatingActionButton {
     private int position;
+    private boolean clickable;
 
     public Skittle(Context context) {
         super(context);
@@ -28,6 +29,14 @@ public class Skittle extends FloatingActionButton {
 
     public int getPosition() {
         return position;
+    }
+
+    public void setClickability(boolean clickable) {
+        this.clickable = clickable;
+    }
+
+    public boolean isClickable() {
+        return clickable;
     }
 
 

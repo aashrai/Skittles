@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
+    <string name="text_skittle_tag">TextSkittle</string>
 
 
     <item name="backgroundContainer" type="id" />

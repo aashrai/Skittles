@@ -30,4 +30,8 @@ public class TextSkittleContainer extends FrameLayout {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    public Skittle getSkittle() {
+        return (Skittle) getChildAt(1);
+    }
 }

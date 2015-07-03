@@ -117,6 +117,7 @@ public class SkittleBuilder {
                 .inflate(R.layout.action_skittle, mSkittleLayout.getSkittleContainer(), false);
         skittle.setImageDrawable(context.getResources().getDrawable(icon));
         skittle.setAlpha(0f);
+        skittle.setClickability(false);
 
         if (color != null) {
             skittle.setBackgroundTintList(Utils.getColorStateList(color, context));
@@ -178,7 +179,9 @@ public class SkittleBuilder {
         @Override
         public void onClick(View v) {
             Log.d("Skittles", "Skittle Click");
-            getmListener().onSkittleClick((Skittle) v);
+            Skittle skittle = (Skittle) v;
+            if (v.isClickable())
+                getmListener().onSkittleClick((Skittle) v);
         }
     };
 
@@ -186,7 +189,9 @@ public class SkittleBuilder {
         @Override
         public void onClick(View v) {
             Log.d("Skittles", "Text Skittle Click");
-            getmListener().onTextSkittleClick(new TextSkittle((TextSkittleContainer) v.getParent()));
+            Skittle skittle = (Skittle) v;
+            if (v.isClickable())
+                getmListener().onTextSkittleClick(new TextSkittle((TextSkittleContainer) v.getParent()));
         }
     };
 

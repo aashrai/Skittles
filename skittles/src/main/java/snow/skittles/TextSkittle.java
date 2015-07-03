@@ -28,7 +28,9 @@ public class TextSkittle {
         this.context = context;
         layout = (TextSkittleContainer) LayoutInflater.from(context)
                 .inflate(R.layout.text_action_skittle, parent, false);
+        layout.setTag(context.getResources().getString(R.string.text_skittle_tag));
         skittle = (Skittle) layout.getChildAt(1);
+        skittle.setClickability(false);
         textView = (TextView) layout.getChildAt(0);
     }
 
