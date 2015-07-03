@@ -2,6 +2,7 @@ package snow.skittlessample;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -119,6 +120,9 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
     @Override
     public void onTextSkittleClick(TextSkittle textSkittle) {
+
+        Snackbar.make(skittleLayout.getSkittleContainer(), "Skittle Pressed", Snackbar.LENGTH_LONG)
+                .show();
 
         switch (textSkittle.getPosition()) {
             case 1:

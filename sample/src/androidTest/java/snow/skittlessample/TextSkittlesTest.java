@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.PositionAssertions.isAbove;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.hasSibling;
 import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
@@ -46,7 +47,9 @@ public class TextSkittlesTest {
                 .check(matches(isClickable())).perform(click());
         onView(withChild(withText(R.string.house_lannister))).check(matches(isDisplayed()));
         onView(allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister))))
-                .check(matches(isClickable()));
+                .check(matches(isClickable()))
+                .perform(click())
+                .check(isAbove(withChild(withId(R.id.snackbar_text))));
 
         onView(withId(R.id.skittle_main)).perform(click());
         onView(withChild(withText(R.string.house_lannister))).check(matches(not(isDisplayed())));
