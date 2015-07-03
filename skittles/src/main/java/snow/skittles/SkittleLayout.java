@@ -9,13 +9,13 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class SkittleLayout extends CoordinatorLayout implements View.OnClickListener, Animator.AnimatorListener {
 
-    LinearLayout skittleContainer;
+    SkittleContainer skittleContainer;
     FloatingActionButton skittleMain;
     Boolean animatable;
     int flag = 0, color;
@@ -49,7 +49,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     @Override
     public void addView(View child) {
         super.addView(child);
-        if (getChildCount() != 1)
+        if (getChildCount() != 1 && !(child instanceof Snackbar.SnackbarLayout))
             addSkittleOnTop();
 
     }
@@ -57,7 +57,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     @Override
     public void addView(View child, int index) {
         super.addView(child, index);
-        if (getChildCount() != 1)
+        if (getChildCount() != 1 && !(child instanceof Snackbar.SnackbarLayout))
             addSkittleOnTop();
     }
 
@@ -96,7 +96,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     private void init(AttributeSet attrs) {
 
         //Add the main FloatingActionButton by default
-        skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
+        skittleContainer = (SkittleContainer) LayoutInflater.from(getContext())
                 .inflate(R.layout.skittle_container, this, false);
         addView(skittleContainer);
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
@@ -137,7 +137,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
         skittleContainer.addView(fab, 0);
     }
 
-    public LinearLayout getSkittleContainer() {
+    public SkittleContainer getSkittleContainer() {
         return skittleContainer;
     }
 
