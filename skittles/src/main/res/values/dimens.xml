@@ -1,5 +1,9 @@
 <resources>
-    <dimen name="fab_bottom_margin">16dp</dimen>
-    <dimen name="fab_right_margin">8dp</dimen>
+    <dimen name="fab_margin_right">0.1dp</dimen>
+    <dimen name="fab_margin_bottom">0.1dp</dimen>
+
+    <dimen name="mini_fab_margin_right">8dp</dimen>
+    <dimen name="skittle_title_margin_right">70dp</dimen>
+    <dimen name="skittle_title_margin_bottom">0dp</dimen>
 
 </resources>

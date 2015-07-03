@@ -4,14 +4,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="right|end"
-    android:layout_marginRight="@dimen/fab_right_margin"
     tools:ignore="RtlHardcoded">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="70dp"
+        android:layout_marginRight="@dimen/skittle_title_margin_right"
+        android:layout_marginBottom="@dimen/skittle_title_margin_bottom"
         android:text="Action Skittle"
         android:textSize="14sp"
         tools:ignore="HardcodedText" />
@@ -20,6 +20,8 @@
         layout="@layout/action_skittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end" />
+        android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:layout_marginRight="@dimen/mini_fab_margin_right" />
 
 </snow.skittles.TextSkittleContainer>
