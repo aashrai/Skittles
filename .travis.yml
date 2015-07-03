@@ -12,4 +12,5 @@ android:
     - '.*intel.+'
 
 script:
+   - android update sdk -u -a
    - ./gradlew build :sample:connectedCheck
