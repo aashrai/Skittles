@@ -32,6 +32,12 @@ android {
         exclude 'META-INF/NOTICE.txt'
 
     }
+
+    lintOptions {
+
+        abortOnError false
+
+    }
 }
 
 
