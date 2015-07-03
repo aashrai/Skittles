@@ -13,4 +13,4 @@ android:
     - '.*intel.+'
 
 script:
-   - ./gradlew build :sample:connectedCheck
+   - ./gradlew :sample:connectedCheck
