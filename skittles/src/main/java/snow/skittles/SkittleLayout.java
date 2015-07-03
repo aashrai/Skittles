@@ -83,10 +83,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
 
         Drawable drawable = skittleMain.getDrawable();
 
-        removeView(findViewById(R.id.skittle_container));
-
-        skittleContainer = (LinearLayout) LayoutInflater.from(getContext())
-                .inflate(R.layout.skittle_container, this, false);
+        removeView(skittleContainer);
         addViewInLayout(skittleContainer, -1, skittleContainer.getLayoutParams());
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
 
