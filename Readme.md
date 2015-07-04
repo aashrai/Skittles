@@ -126,7 +126,7 @@ Snackbar.make(skittleLayout.getSkittleContainer(), "Skittle Pressed", Snackbar.L
 ##Gradle
 ```
 dependencies{
-compile 'com.rlj.library:skittles:0.0.1-beta'
+compile 'com.rlj.library:skittles:1.0.0'
 }
 ```
 
