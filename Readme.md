@@ -137,8 +137,6 @@ See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)**
 + Option for adding skittles by xml (inspired by Navigation View)
 + Better support for most versions
 
-**Currently in heavy dev, good enough for playing around**
-
 
 #Taste the rainbow
 ![Skittles](art/Taste the rainbow.jpg)
