@@ -92,6 +92,16 @@ public class SkittleBuilder {
         if (icon != null)
             mSkittle.setImageDrawable(icon);
     }
+    
+        /**
+     * Call this to get an instance of the main normal sized FloatingActionButton
+     *
+     */
+    public FloatingActionButton getMainSkittle() {
+
+        FloatingActionButton mSkittle = (FloatingActionButton) mSkittleLayout.findViewById(R.id.skittle_main);
+        return mSkittle;
+    }
 
     /**
      * Call this to add a simple skittle
