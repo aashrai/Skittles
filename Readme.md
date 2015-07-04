@@ -11,7 +11,7 @@ A simple,clean api for adding PushBullet style skittles to your app for more mat
 First some housekeeping code:
 
 Use
-[SkittleLayout](library/src/main/java/snow/skittles/SkittleLayout.java) as a root view in your layouts
+[SkittleLayout](skittles/src/main/java/snow/skittles/SkittleLayout.java) as a root view in your layouts
 
 ```
 <snow.skittles.SkittleLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,7 +38,7 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 Some further housekeeping...
 
-Declare a [SkittleBuilder](library/src/main/java/snow/skittles/SkittleBuilder.java),used to add skittles and pass the root SkittleLayout to it
+Declare a [SkittleBuilder](skittles/src/main/java/snow/skittles/SkittleBuilder.java),used to add skittles and pass the root SkittleLayout to it
 
 ```
 SkittleLayout skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
@@ -56,7 +56,7 @@ skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
 skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
 ```
 
-A bit more work for adding [Text Skittle](library/src/main/java/snow/skittles/TextSkittle.java)
+A bit more work for adding [Text Skittle](skittles/src/main/java/snow/skittles/TextSkittle.java)
 
 ```
 TextSkittle textSkittle = skittleBuilder.makeTextSkittle
@@ -69,10 +69,10 @@ skittleBuilder.addTextSkittle(textSkittle);
 
 Flexible callback for clicks:
 
-+ Add a click listener(SkittleBuilder.SkittleClickListener) to the [SkittleBuilder](library/src/main/java/snow/skittles/SkittleBuilder.java) object
++ Add a click listener(SkittleBuilder.SkittleClickListener) to the [SkittleBuilder](skittles/src/main/java/snow/skittles/SkittleBuilder.java) object
 `skittleBuilder.setSkittleListener(this);`
 
-+ This exposes two methods for [Skittle](library/src/main/java/snow/skittles/Skittle.java) and [TextSkittle](library/src/main/java/snow/skittles/TextSkittle.java) click events for convenience
++ This exposes two methods for [Skittle](skittles/src/main/java/snow/skittles/Skittle.java) and [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) click events for convenience
 
 ```
 void onSkittleClick(Skittle skittle);
@@ -98,7 +98,7 @@ public void onSkittleClick(Skittle skittle) {
 }
 ```
 
-Similarly for [Text Skittle](library/src/main/java/snow/skittles/TextSkittle.java)
+Similarly for [Text Skittle](skittles/src/main/java/snow/skittles/TextSkittle.java)
 ```
 public void onTextSkittleClick(TextSkittle textSkittle) {
 
@@ -112,6 +112,16 @@ public void onTextSkittleClick(TextSkittle textSkittle) {
   }
 }
 ```
+##Snackbar Support
+<img src="art/Snackbar.gif" width=196 height=350/>
+<img src="art/SnackbarDismiss.gif" width=196 height=350/>
+
+When using snackbars ensure that you use [SkittleContainer](skittles/src/main/java/snow/skittles/SkittleContainer.java)
+
+```
+Snackbar.make(skittleLayout.getSkittleContainer(), "Skittle Pressed", Snackbar.LENGTH_LONG)
+.show();
+```
 
 ##Gradle
 ```
@@ -121,11 +131,6 @@ compile 'com.rlj.library:skittles:0.0.1-beta'
 ```
 
 See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)** and **[JavaDoc](http://aashrairavooru.github.io/Skittles/)** for further guidance
-
-##Sample Screenshots
-<img src="art/Sample1.png" width=196 height=350/>
-<img src="art/Sample2.png" width=196 height=350/>
-<img src="art/Sample3.png" width=196 height=350/>
 
 ##Upcoming
 + Better support for animations
