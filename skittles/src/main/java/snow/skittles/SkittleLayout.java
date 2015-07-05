@@ -6,7 +6,6 @@ import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorRes;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,7 +28,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     SkittleContainer skittleContainer;
     FloatingActionButton skittleMain;
     Boolean animatable;
-    int flag = 0, color;
+    Integer flag = 0, color;
     List<Float> yList = new ArrayList<Float>();
 
     public SkittleLayout(Context context) {
@@ -87,8 +86,9 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
         addViewInLayout(skittleContainer, -1, skittleContainer.getLayoutParams());
         skittleMain = (FloatingActionButton) skittleContainer.findViewById(R.id.skittle_main);
 
-        setMainSkittleColor(color);
-        skittleMain.setImageDrawable(drawable);
+        setMainSkittleColor();
+        if (drawable != null)
+            skittleMain.setImageDrawable(drawable);
         skittleMain.setOnClickListener(this);
 
     }
@@ -105,31 +105,38 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
         TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.SkittleLayout);
 
         try {
-            color = array.getResourceId(R.styleable.SkittleLayout_mainSkittleColor, 0);
-            setMainSkittleColor(color);
+            color = array.getResourceId(R.styleable.SkittleLayout_mainSkittleColor
+                    , Utils.fetchAccentColor(getContext()));
+
+            setMainSkittleColor();
             Drawable drawable = array.getDrawable(R.styleable.SkittleLayout_mainSkittleIcon);
-            skittleMain.setImageDrawable(drawable);
+            if (drawable != null)
+                skittleMain.setImageDrawable(drawable);
         } finally {
             array.recycle();
         }
 
     }
 
-
-    public void setMainSkittleColor(@ColorRes int color) {
+    private void setMainSkittleColor() {
         skittleMain.setBackgroundTintList(Utils.getColorStateList(color, getContext()));
     }
 
-    public void setMainSkittleAnimatable(boolean animatable) {
+    void setMainSkittleColor(int color) {
+        this.color = color;
+        skittleMain.setBackgroundTintList(Utils.getColorStateList(color, getContext()));
+    }
+
+    void setMainSkittleAnimatable(boolean animatable) {
         this.animatable = animatable;
     }
 
-    public boolean getMainSkittleAnimatable() {
+    boolean getMainSkittleAnimatable() {
         return animatable;
     }
 
 
-    public void addFab(View fab) {
+    void addFab(View fab) {
         //Add all button for at the same index for laying out the skittles vertically
 
         if (fab.getTag().equals("miniSkittle"))

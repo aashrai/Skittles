@@ -2,12 +2,16 @@ package snow.skittles;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.support.annotation.ColorRes;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.Log;
+import android.util.TypedValue;
 
 /**
  * Created by aashrai on 29/6/15.
  */
 public class Utils {
+
 
     /**
      * Used internally,a hack for changing the color of FloatingActionButton
@@ -16,23 +20,35 @@ public class Utils {
      * @param context
      * @return
      */
-    public static ColorStateList getColorStateList(@ColorRes int color, Context context) {
+    public static ColorStateList getColorStateList(int color, Context context) {
+
+        int parsedColor;
+
+        try {
+            parsedColor = context.getResources().getColor(color);
+        } catch (Resources.NotFoundException e) {
+            parsedColor = color;
+        }
+        Log.d("Utils", "Called");
         int[][] states = new int[][]{
                 new int[]{}
         };
         int[] colors = new int[]{
-                context.getResources().getColor(color),
+                parsedColor
         };
         return new ColorStateList(states, colors);
     }
 
-    public static ColorStateList getParsedColorStateList(int color) {
-        int[][] states = new int[][]{
-                new int[]{}
-        };
-        int[] colors = new int[]{
-                color,
-        };
-        return new ColorStateList(states, colors);
+    static int fetchAccentColor(Context mContext) {
+        TypedValue typedValue = new TypedValue();
+
+        TypedArray a = mContext.obtainStyledAttributes(typedValue.data, new int[]{R.attr.colorAccent});
+        int color = a.getColor(0, 0);
+
+        a.recycle();
+
+        return color;
     }
+
+
 }

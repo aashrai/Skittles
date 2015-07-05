@@ -2,7 +2,6 @@ package snow.skittles;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +15,6 @@ import android.view.View;
 @SuppressWarnings("ALL")
 public class SkittleBuilder {
 
-    //TODO add option for changing the color of the main skittle
     SkittleLayout mSkittleLayout;
     TextSkittle textSkittle;
     Context context;
@@ -49,10 +47,10 @@ public class SkittleBuilder {
      * @param context        pass in the context of the activity
      * @param mSkittleLayout pass an instance of the skittle you have set as the root of your layouts
      * @param animatable     should the main Skittle have an animation
-     * @param color          pass the color for the mini skittles
+     * @param color          pass the color for all mini skittles,you can pass any either a reference or a generated color
      */
     public SkittleBuilder(@NonNull Context context, @NonNull SkittleLayout mSkittleLayout, boolean animatable
-            , @ColorRes @Nullable int color) {
+            , @Nullable Integer color) {
 
         setUp(context, mSkittleLayout, animatable, color);
 
@@ -62,22 +60,22 @@ public class SkittleBuilder {
      * @param context
      * @param mSkittleLayout
      * @param animatable
-     * @param miniSkittleColor
-     * @param mainSkittleColor pass the @ColorRes for the main Skittle
+     * @param miniSkittleColor you can pass any either a reference or a generated color
+     * @param mainSkittleColor pass the for the main Skittle,you can pass any either a reference or a generated color
      */
     public SkittleBuilder(@NonNull Context context, @NonNull SkittleLayout mSkittleLayout, boolean animatable
-            , @ColorRes int miniSkittleColor, @ColorRes int mainSkittleColor) {
+            , @Nullable Integer miniSkittleColor, int mainSkittleColor) {
 
         setUp(context, mSkittleLayout, animatable, miniSkittleColor);
         mSkittleLayout.setMainSkittleColor(mainSkittleColor);
     }
 
     private void setUp(@NonNull Context context, @NonNull SkittleLayout mSkittleLayout, boolean animatable
-            , @ColorRes @Nullable int color) {
+            , @Nullable Integer color) {
         this.mSkittleLayout = mSkittleLayout;
         this.context = context;
-        mSkittleLayout.setMainSkittleAnimatable(animatable);
         this.color = color;
+        mSkittleLayout.setMainSkittleAnimatable(animatable);
 
     }
 
@@ -94,6 +92,18 @@ public class SkittleBuilder {
     }
 
     /**
+     * Call this to change the color of the main skittle,use this method only if you want to
+     * change the color of the main skittle dynamically, else use the constructor @see #SkittleBuilder(@NonNull Context
+     * , @NonNull SkittleLayout, boolean animatable, @Nullable Integer, int)
+     *
+     * @param color you can pass either a reference or a generated color,you can pass either
+     *              a reference or a generated color
+     */
+    public void setMainSkittleColor(int color) {
+        mSkittleLayout.setMainSkittleColor(color);
+    }
+
+    /**
      * Call this to add a simple skittle
      *
      * @param icon
@@ -105,7 +115,7 @@ public class SkittleBuilder {
 
     }
 
-    public void addSkittle(@NonNull int icon, @ColorRes int color) {
+    public void addSkittle(@NonNull int icon, int color) {
 
         Skittle skittle = setUpMiniSkittle(icon);
         skittle.setBackgroundTintList(Utils.getColorStateList(color, context));
@@ -155,17 +165,16 @@ public class SkittleBuilder {
      * @param text
      * @return
      */
-    public TextSkittle makeTextSkittle(@Nullable int icon, @NonNull String text) {
+    public TextSkittle makeTextSkittle(@Nullable Integer icon, @NonNull String text) {
 
         textSkittle = new TextSkittle(context, mSkittleLayout.getSkittleContainer());
         textSkittle.setIcon(context.getResources().getDrawable(icon));
         textSkittle.setText(text);
-        textSkittle.setSkittleColor(color);
 
         return textSkittle;
     }
 
-    public TextSkittle makeTextSkittle(@Nullable int icon, @NonNull String text, @ColorRes int color) {
+    public TextSkittle makeTextSkittle(@Nullable Integer icon, @NonNull String text, int color) {
 
 
         textSkittle = makeTextSkittle(icon, text);

@@ -23,7 +23,7 @@ public class Skittle extends FloatingActionButton {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setPosition(int position) {
+    void setPosition(int position) {
         this.position = position;
     }
 
@@ -31,13 +31,12 @@ public class Skittle extends FloatingActionButton {
         return position;
     }
 
-    public void setClickability(boolean clickable) {
+    void setClickability(boolean clickable) {
         this.clickable = clickable;
     }
 
+    @Override
     public boolean isClickable() {
         return clickable;
     }
-
-
 }

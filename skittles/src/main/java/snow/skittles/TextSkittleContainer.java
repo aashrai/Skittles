@@ -23,15 +23,15 @@ public class TextSkittleContainer extends FrameLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
+    void setPosition(int position) {
         this.position = position;
     }
 
-    public Skittle getSkittle() {
+    Skittle getSkittle() {
         return (Skittle) getChildAt(1);
     }
 }

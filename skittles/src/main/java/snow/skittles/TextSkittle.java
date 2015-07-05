@@ -39,18 +39,18 @@ public class TextSkittle {
      *
      * @param textSkittleLayout
      */
-    public TextSkittle(TextSkittleContainer textSkittleLayout) {
+    TextSkittle(TextSkittleContainer textSkittleLayout) {
 
         layout = textSkittleLayout;
         textView = (TextView) textSkittleLayout.getChildAt(0);
         skittle = (Skittle) textSkittleLayout.getChildAt(1);
     }
 
-    public TextSkittleContainer getTextSkittle() {
+    TextSkittleContainer getTextSkittle() {
         return layout;
     }
 
-    public Skittle getSkittle() {
+    Skittle getSkittle() {
         return skittle;
     }
 

@@ -1,5 +1,6 @@
 package snow.skittlessample;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         setContentView(R.layout.activity_main);
         skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
         skittleBuilder = new SkittleBuilder(this, skittleLayout, false,
-                R.color.material_deep_purple_500);
+                null, Color.RED);
         skittleBuilder.setSkittleListener(this);
 
         tvBackground = (TextView) findViewById(R.id.tvBackground);
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         backdrop = (ImageView) findViewById(R.id.backdrop);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-//        collapsingToolbarLayout.setTitle(getResources().getString(R.string.house_stark));
+        collapsingToolbarLayout.setTitle("Game of Thrones");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
