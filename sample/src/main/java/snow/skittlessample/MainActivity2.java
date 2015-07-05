@@ -1,5 +1,6 @@
 package snow.skittlessample;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
@@ -36,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity implements SkittleBuilder.S
         skittleBuilder = new SkittleBuilder(this, skittleLayout, false,
                 R.color.material_deep_purple_500);
         skittleBuilder.setSkittleListener(this);
+        skittleBuilder.setMainSkittleColor(Color.CYAN);
 
         tvBackground = (TextView) findViewById(R.id.tvBackground);
         tvHistory = (TextView) findViewById(R.id.tvHistory);

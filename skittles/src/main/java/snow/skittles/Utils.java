@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.util.Log;
 import android.util.TypedValue;
 
 /**
@@ -29,7 +28,6 @@ public class Utils {
         } catch (Resources.NotFoundException e) {
             parsedColor = color;
         }
-        Log.d("Utils", "Called");
         int[][] states = new int[][]{
                 new int[]{}
         };

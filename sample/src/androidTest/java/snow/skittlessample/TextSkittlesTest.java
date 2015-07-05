@@ -22,6 +22,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
+import static snow.skittlessample.TestUtils.hasSkittleColor;
+import static snow.skittlessample.TestUtils.hasSkittleDrawable;
 
 /**
  * Created by aashrai on 2/7/15.
@@ -37,17 +39,22 @@ public class TextSkittlesTest {
             MainActivity.class);
 
     @Test
-    public void textSkittlesTest_sameActivity(){
+    public void textSkittlesTest_sameActivity() {
 
         Object object = "miniSkittle";
         onView(allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister))))
                 .check(matches(not(isClickable())));
 
         onView(withId(R.id.skittle_main))
-                .check(matches(isClickable())).perform(click());
-        onView(withChild(withText(R.string.house_lannister))).check(matches(isDisplayed()));
-        onView(allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister))))
                 .check(matches(isClickable()))
+                .check(matches(hasSkittleDrawable(R.drawable.ic_android_white_18dp)))
+                .perform(click());
+        onView(withChild(withText(R.string.house_lannister))).check(matches(isDisplayed()));
+        onView(allOf(withTagValue(equalTo(object))
+                , hasSibling(withText(R.string.house_lannister))))
+                .check(matches(isClickable()))
+                .check(matches(hasSkittleDrawable(R.drawable.lannister_icon)))
+                .check(matches(hasSkittleColor(R.color.lannister)))
                 .perform(click())
                 .check(isAbove(withChild(withId(R.id.snackbar_text))));
 

@@ -1,6 +1,8 @@
 package snow.skittles;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 
@@ -10,6 +12,7 @@ import android.util.AttributeSet;
 public class Skittle extends FloatingActionButton {
     private int position;
     private boolean clickable;
+    private ColorStateList mBackgroundColorStateList;
 
     public Skittle(Context context) {
         super(context);
@@ -38,5 +41,17 @@ public class Skittle extends FloatingActionButton {
     @Override
     public boolean isClickable() {
         return clickable;
+    }
+
+    @Override
+    public void setBackgroundTintList(ColorStateList tint) {
+        super.setBackgroundTintList(tint);
+        mBackgroundColorStateList = tint;
+    }
+
+    @Nullable
+    @Override
+    public ColorStateList getBackgroundTintList() {
+        return mBackgroundColorStateList;
     }
 }

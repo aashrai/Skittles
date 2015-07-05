@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         skittleBuilder = new SkittleBuilder(this, skittleLayout, false,
                 null, Color.RED);
         skittleBuilder.setSkittleListener(this);
+        skittleBuilder.setMainSkittleColor(Color.GREEN);
 
         tvBackground = (TextView) findViewById(R.id.tvBackground);
         tvHistory = (TextView) findViewById(R.id.tvHistory);
