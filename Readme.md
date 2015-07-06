@@ -1,5 +1,7 @@
 #Skittles
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Skittles-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2076) [![Build Status](https://travis-ci.org/aashrairavooru/Skittles.svg)](https://travis-ci.org/aashrairavooru/Skittles)  [ ![Download](https://api.bintray.com/packages/aashrairavooru/maven/Skittles/images/download.svg) ](https://bintray.com/aashrairavooru/maven/Skittles/_latestVersion)
+[
+![Jitpack](https://img.shields.io/badge/jitpack-download-green.svg?style=flat-square)](https://jitpack.io/#aashrairavooru/Skittles)
 
 A simple,clean api for adding PushBullet style skittles to your app for more material design glory.This library uses the <a href="https://developer.android.com/reference/android/support/design/widget/FloatingActionButton.html">FloatingActionButton</a> provided in the android design support library
 
