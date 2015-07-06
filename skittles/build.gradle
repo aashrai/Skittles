@@ -26,9 +26,17 @@ ext {
     allLicenses = ["Apache-2.0"]
 }
 
+def isTravis = "true".equals(System.getenv("TRAVIS"))
+def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
+
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.0"
+
+    dexOptions {
+        // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
+        preDexLibraries = preDexEnabled && !isTravis
+    }
 
     defaultConfig {
         minSdkVersion 14
@@ -43,14 +51,15 @@ android {
         }
     }
     lintOptions {
-
         abortOnError false
-
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 }
 
-def file = new File('local.properties')
-if (file.exists()) {
+if (!isTravis) {
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
