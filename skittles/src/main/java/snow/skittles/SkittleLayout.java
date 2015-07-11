@@ -27,7 +27,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
 
     SkittleContainer skittleContainer;
     FloatingActionButton skittleMain;
-    Boolean animatable;
+    boolean animatable;
     Integer flag = 0, color;
     List<Float> yList = new ArrayList<Float>();
 
