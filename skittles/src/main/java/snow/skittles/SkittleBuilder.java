@@ -216,4 +216,11 @@ public class SkittleBuilder {
     public void setSkittleListener(@NonNull SkittleClickListener mListener) {
         this.mListener = mListener;
     }
+
+    /**
+     * Call this method to manually toggle the skittle menu
+     */
+    public void toggleSkittleMenu() {
+        mSkittleLayout.animateMiniSkittles();
+    }
 }

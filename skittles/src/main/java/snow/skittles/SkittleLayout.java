@@ -150,6 +150,10 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        animateMiniSkittles();
+    }
+
+    public void animateMiniSkittles() {
         View child;
         int COUNT = skittleContainer.getChildCount();
         if (getMainSkittleAnimatable())
