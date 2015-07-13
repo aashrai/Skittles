@@ -189,7 +189,7 @@ public class SkittleBuilder {
         public void onClick(View v) {
             Log.d("Skittles", "Skittle Click");
             Skittle skittle = (Skittle) v;
-            if (v.isClickable())
+            if (v.isClickable() && getmListener() != null)
                 getmListener().onSkittleClick((Skittle) v);
         }
     };
@@ -199,7 +199,7 @@ public class SkittleBuilder {
         public void onClick(View v) {
             Log.d("Skittles", "Text Skittle Click");
             Skittle skittle = (Skittle) v;
-            if (v.isClickable())
+            if (v.isClickable() && getmListener() != null)
                 getmListener().onTextSkittleClick(new TextSkittle((TextSkittleContainer) v.getParent()));
         }
     };
