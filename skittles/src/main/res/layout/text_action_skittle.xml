@@ -10,10 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="@dimen/skittle_title_margin_right"
         android:layout_marginBottom="@dimen/skittle_title_margin_bottom"
+        android:layout_marginRight="@dimen/skittle_title_margin_right"
+        android:padding="@dimen/text_skittle_padding"
         android:text="Action Skittle"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_skittle_text_size"
         tools:ignore="HardcodedText" />
 
     <include
