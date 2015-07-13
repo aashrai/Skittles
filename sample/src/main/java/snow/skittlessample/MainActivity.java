@@ -101,22 +101,7 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
     @Override
     public void onSkittleClick(Skittle skittle) {
 
-        switch (skittle.getPosition()) {
-            case 1:
 
-                setUpHouse(R.string.lannister_background, R.string.lannister_history,
-                        R.string.house_lannister, R.drawable.house_lannister);
-                break;
-            case 2:
-
-                setUpHouse(R.string.barratheon_background, R.string.barratheon_history,
-                        R.string.house_barratheon, R.drawable.house_barratheon);
-                break;
-            case 3:
-
-                setUpHouse(R.string.stark_background, R.string.stark_history,
-                        R.string.house_stark, R.drawable.house_stark);
-        }
 
     }
 

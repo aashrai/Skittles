@@ -55,8 +55,9 @@ public class TextSkittlesTest {
                 .check(matches(isClickable()))
                 .check(matches(hasSkittleDrawable(R.drawable.lannister_icon)))
                 .check(matches(hasSkittleColor(R.color.lannister)))
-                .perform(click())
-                .check(isAbove(withChild(withId(R.id.snackbar_text))));
+                .perform(click());
+
+        onView(withId(R.id.skittle_container)).check(isAbove(withChild(withId(R.id.snackbar_text))));
 
         onView(withId(R.id.skittle_main)).perform(click());
         onView(withChild(withText(R.string.house_lannister))).check(matches(not(isDisplayed())));
