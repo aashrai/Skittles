@@ -25,11 +25,11 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class SkittleLayout extends CoordinatorLayout implements View.OnClickListener, Animator.AnimatorListener {
 
-    SkittleContainer skittleContainer;
-    FloatingActionButton skittleMain;
-    boolean animatable;
-    Integer flag = 0, color;
-    List<Float> yList = new ArrayList<Float>();
+    private static SkittleContainer skittleContainer;
+    private static FloatingActionButton skittleMain;
+    private static boolean animatable;
+    private static int flag = 0, color;
+    private static final List<Float> yList = new ArrayList<Float>();
 
     public SkittleLayout(Context context) {
         super(context);
@@ -139,7 +139,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     void addFab(View fab) {
         //Add all button for at the same index for laying out the skittles vertically
 
-        if (fab.getTag().equals("miniSkittle"))
+        if (fab.getTag() != null && fab.getTag().equals("miniSkittle"))
             fab.setTag("Skittle " + skittleContainer.getChildCount());
         skittleContainer.addView(fab, 0);
     }
@@ -225,7 +225,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     private void toggleSkittleClick(View v, boolean clickability) {
 
         if (v.getTag().equals(getResources().getString(R.string.text_skittle_tag)))
-            ((TextSkittleContainer) v).getSkittle().setClickability(clickability);
+            ((TextSkittle) v).getSkittle().setClickability(clickability);
         else
             ((Skittle) v).setClickability(clickability);
     }
