@@ -58,14 +58,13 @@ skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
 skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
 ```
 
-A bit more work for adding [Text Skittle](skittles/src/main/java/snow/skittles/TextSkittle.java)
+Add [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) to your activity/fragment
 
 ```
-TextSkittle textSkittle = skittleBuilder.makeTextSkittle
-(R.drawable.lannister_icon, getResources().getString(R.string.house_lannister), R.color.lannister);
-textSkittle.setTextBackgroundColor(R.color.textBackground);
-textSkittle.setTextColor(android.R.color.black);
-skittleBuilder.addTextSkittle(textSkittle);
+skittleBuilder.makeTextSkittle(getResources().getString(R.string.house_lannister)
+                , R.drawable.lannister_icon)
+                .setSkittleColor(R.color.lannister)
+                .setTextBackground(R.color.textBackground).add();
 
 ```
 
@@ -137,7 +136,6 @@ See the **[Sample](sample/src/main/java/snow/skittlessample/MainActivity.java)**
 ##Upcoming
 + Better support for animations
 + Option for adding skittles by xml (inspired by Navigation View)
-+ Better support for most versions
 
 
 #Taste the rainbow
