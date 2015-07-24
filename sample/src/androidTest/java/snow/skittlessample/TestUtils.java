@@ -27,6 +27,7 @@ public class TestUtils {
                 description.appendText("with skittle color: ");
             }
 
+            @SuppressWarnings("ConstantConditions")
             @Override
             protected boolean matchesSafely(View skittle) {
                 ColorStateList colorStateList = Utils.getColorStateList(color, InstrumentationRegistry.getTargetContext());
