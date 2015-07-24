@@ -31,10 +31,11 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-        skittleBuilder = new SkittleBuilder(this, skittleLayout, false,
-                null, Color.RED);
+        skittleBuilder = new SkittleBuilder.Builder(this, skittleLayout)
+                .mainSkittleColor(Color.GREEN)
+                .mainSkittleIcon(R.drawable.ic_android_white_18dp)
+                .build();
         skittleBuilder.setSkittleListener(this);
-        skittleBuilder.setMainSkittleColor(Color.GREEN);
 
         tvBackground = (TextView) findViewById(R.id.tvBackground);
         tvHistory = (TextView) findViewById(R.id.tvHistory);
@@ -50,29 +51,19 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 
     private void addSkittles() {
 
-        //For adding normal Skittles
-//        skittleBuilder.addSkittle(R.drawable.lannister_icon, R.color.lannister);
-//        skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
-//        skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
-
         //Adding Text Skittles
-        TextSkittle textSkittle = skittleBuilder.makeTextSkittle
-                (R.drawable.lannister_icon, getResources().getString(R.string.house_lannister), R.color.lannister);
-        textSkittle.setTextBackgroundColor(R.color.textBackground);
-        textSkittle.setTextColor(android.R.color.black);
-        skittleBuilder.addTextSkittle(textSkittle);
-
-        textSkittle = skittleBuilder.makeTextSkittle
-                (R.drawable.barratheon_icon, getResources().getString(R.string.house_barratheon), R.color.barratheon);
-        textSkittle.setTextBackgroundColor(R.color.textBackground);
-        textSkittle.setTextColor(android.R.color.black);
-        skittleBuilder.addTextSkittle(textSkittle);
-
-        textSkittle = skittleBuilder.makeTextSkittle
-                (R.drawable.stark_icon, getResources().getString(R.string.house_stark), R.color.stark);
-        textSkittle.setTextBackgroundColor(R.color.textBackground);
-        textSkittle.setTextColor(android.R.color.black);
-        skittleBuilder.addTextSkittle(textSkittle);
+        skittleBuilder.makeTextSkittle(getResources().getString(R.string.house_lannister)
+                , R.drawable.lannister_icon)
+                .setSkittleColor(R.color.lannister)
+                .setTextBackground(R.color.textBackground).add();
+        skittleBuilder.makeTextSkittle(getResources().getString(R.string.house_barratheon)
+                , R.drawable.barratheon_icon)
+                .setTextBackground(R.color.textBackground)
+                .setSkittleColor(R.color.barratheon).add();
+        skittleBuilder.makeTextSkittle(getResources().getString(R.string.house_stark)
+                , R.drawable.stark_icon)
+                .setTextBackground(R.color.textBackground)
+                .setSkittleColor(R.color.stark).add();
 
     }
 
@@ -102,13 +93,12 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
     public void onSkittleClick(Skittle skittle) {
 
 
-
     }
 
     @Override
     public void onTextSkittleClick(TextSkittle textSkittle) {
 
-        Snackbar.make(skittleLayout.getSkittleContainer(), "Skittle Pressed", Snackbar.LENGTH_LONG)
+        Snackbar.make(skittleLayout.getSkittleContainer(), textSkittle.getText(), Snackbar.LENGTH_LONG)
                 .show();
 
         switch (textSkittle.getPosition()) {

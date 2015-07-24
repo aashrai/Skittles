@@ -34,8 +34,10 @@ public class MainActivity2 extends AppCompatActivity implements SkittleBuilder.S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-        skittleBuilder = new SkittleBuilder(this, skittleLayout, false,
-                R.color.material_deep_purple_500);
+        skittleBuilder = new SkittleBuilder.Builder(this, skittleLayout)
+                .animatable(false)
+                .mainSkittleColor(R.color.material_deep_purple_500)
+                .build();
         skittleBuilder.setSkittleListener(this);
         skittleBuilder.setMainSkittleColor(Color.CYAN);
 
@@ -57,25 +59,6 @@ public class MainActivity2 extends AppCompatActivity implements SkittleBuilder.S
         skittleBuilder.addSkittle(R.drawable.lannister_icon, R.color.lannister);
         skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
         skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
-
-        //Adding Text Skittles
-//        TextSkittle textSkittle = skittleBuilder.makeTextSkittle
-//                (R.drawable.lannister_icon, getResources().getString(R.string.house_lannister), R.color.lannister);
-//        textSkittle.setTextBackgroundColor(R.color.textBackground);
-//        textSkittle.setTextColor(android.R.color.black);
-//        skittleBuilder.addTextSkittle(textSkittle);
-//
-//        textSkittle = skittleBuilder.makeTextSkittle
-//                (R.drawable.barratheon_icon, getResources().getString(R.string.house_barratheon), R.color.barratheon);
-//        textSkittle.setTextBackgroundColor(R.color.textBackground);
-//        textSkittle.setTextColor(android.R.color.black);
-//        skittleBuilder.addTextSkittle(textSkittle);
-//
-//        textSkittle = skittleBuilder.makeTextSkittle
-//                (R.drawable.stark_icon, getResources().getString(R.string.house_stark), R.color.stark);
-//        textSkittle.setTextBackgroundColor(R.color.textBackground);
-//        textSkittle.setTextColor(android.R.color.black);
-//        skittleBuilder.addTextSkittle(textSkittle);
 
     }
 
@@ -156,5 +139,7 @@ public class MainActivity2 extends AppCompatActivity implements SkittleBuilder.S
         backdrop.setImageDrawable(getResources().getDrawable(coatOfArms));
 
     }
+
+
 }
 
