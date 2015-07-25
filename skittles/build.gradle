@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/aashrairavooru/Skittles'
     gitUrl = 'https://github.com/aashrairavooru/Skittles.git'
 
-    libraryVersion = '1.0.2'
+    libraryVersion = '2.0.0'
 
     developerId = 'aashrairavooru'
     developerName = 'Aashrai Ravooru'
@@ -31,7 +31,7 @@ def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    buildToolsVersion "22.0.1"
 
     dexOptions {
         // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
@@ -79,6 +79,10 @@ dependencies {
         exclude module: 'com.android.support:appcompat-v7:22.2.0'
     }
     compile 'com.android.support:recyclerview-v7:22.2.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
 }
 
 
