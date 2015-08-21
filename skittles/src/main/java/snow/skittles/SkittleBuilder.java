@@ -19,7 +19,7 @@ import android.widget.TextView;
 @SuppressWarnings("ALL")
 public class SkittleBuilder {
 
-    private static SkittleLayout mSkittleLayout;
+    private SkittleLayout mSkittleLayout;
     private TextSkittle textSkittle;
     private Context context;
     private int skittleCount = 1;
@@ -124,7 +124,6 @@ public class SkittleBuilder {
         @Override
         public void onClick(View v) {
             Log.d("Skittles", "Skittle Click");
-            Skittle skittle = (Skittle) v;
             if (v.isClickable() && getmListener() != null)
                 getmListener().onSkittleClick((Skittle) v);
         }
@@ -134,7 +133,6 @@ public class SkittleBuilder {
         @Override
         public void onClick(View v) {
             Log.d("Skittles", "Text Skittle Click");
-            Skittle skittle = (Skittle) v;
             if (v.isClickable() && getmListener() != null)
                 getmListener().onTextSkittleClick((TextSkittle) v.getParent());
         }

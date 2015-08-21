@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <include
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     layout="@layout/action_skittle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="end"
+    android:layout_gravity="end|bottom"
     android:layout_marginBottom="@dimen/fab_margin_bottom"
-    android:layout_marginRight="@dimen/mini_fab_margin_right" />
+    android:layout_marginRight="@dimen/mini_fab_margin_right"
+    tools:ignore="RtlHardcoded" />

@@ -9,12 +9,13 @@ import android.graphics.drawable.Drawable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +26,13 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class SkittleLayout extends CoordinatorLayout implements View.OnClickListener, Animator.AnimatorListener {
 
-    private static SkittleContainer skittleContainer;
-    private static FloatingActionButton skittleMain;
+    private SkittleContainer skittleContainer;
+    private FloatingActionButton skittleMain;
     private static boolean animatable;
     private static int flag = 0, color;
     private static final List<Float> yList = new ArrayList<Float>();
+    private final static LinearInterpolator inInterpolator = new LinearInterpolator();
+    private final static OvershootInterpolator outInterpolator = new OvershootInterpolator(5);
 
     public SkittleLayout(Context context) {
         super(context);
@@ -198,18 +201,19 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     private void toggleSkittles(View child, int index) {
 
         int duration = 200;
-        FastOutLinearInInterpolator interpolator = new FastOutLinearInInterpolator();
+
 
         ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(child,
                 PropertyValuesHolder.ofFloat("Y", child.getY() + child.getMeasuredHeight() / 2, child.getY()),
                 PropertyValuesHolder.ofFloat("alpha", 0, 1)).setDuration(duration);
-        animator.setInterpolator(interpolator);
 
         if (flag == 0) {
+            animator.setInterpolator(outInterpolator);
             animator.setStartDelay((skittleContainer.getChildCount() - index) * 15);
             Log.d("Skittle Layout", "Animation");
             animator.start();
         } else {
+            animator.setInterpolator(inInterpolator);
             animator.setStartDelay(index * 15);
             animator.addListener(this);
             animator.reverse();
@@ -246,7 +250,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
                 child.setAlpha(0f);
                 child.setY(yList.get(i));
                 toggleSkittleClick(child, false);
-                child.setVisibility(GONE);
+                child.setVisibility(INVISIBLE);
             }
         }
     }

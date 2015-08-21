@@ -31,6 +31,7 @@ public class SkittleContainer extends LinearLayout {
     public SkittleContainer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
     @SuppressWarnings("unused")
     public static class FloatingLayoutBehavior extends CoordinatorLayout.Behavior<SkittleContainer> {
 

@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.leakcanary.RefWatcher;
+
 import snow.skittles.Skittle;
 import snow.skittles.SkittleBuilder;
 import snow.skittles.SkittleLayout;
@@ -127,5 +129,13 @@ public class MainActivity extends AppCompatActivity implements SkittleBuilder.Sk
 //        toolbar.setTitle("Changed");
         backdrop.setImageDrawable(getResources().getDrawable(coatOfArms));
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        skittleLayout=null;
+        RefWatcher refWatcher=SkittleSample.getRefWatcher(this);
+        refWatcher.watch(this);
     }
 }
