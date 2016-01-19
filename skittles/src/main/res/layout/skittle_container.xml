@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_gravity="right|bottom"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="@dimen/fab_margin_bottom"
         android:layout_marginRight="@dimen/fab_margin_right"
         android:src="@drawable/ic_add_white_18dp"
