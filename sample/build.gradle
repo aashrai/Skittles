@@ -5,7 +5,7 @@ def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23"
+    buildToolsVersion "23.0.2"
 
     dexOptions {
         // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId "snow.skittlessample"
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -52,8 +52,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:cardview-v7:23.0.0'
-    compile 'com.android.support:design:23.0.0'
+    compile 'com.android.support:cardview-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
     compile project(':skittles')
 
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
