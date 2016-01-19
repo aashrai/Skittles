@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="end"
-    android:layout_marginBottom="@dimen/fab_margin_bottom"
+    android:layout_gravity="end|bottom"
     android:layout_marginRight="@dimen/mini_fab_margin_right"
     android:tag="@string/miniSkittle"
     app:fabSize="mini">

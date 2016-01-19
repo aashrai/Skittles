@@ -3,7 +3,6 @@ package snow.skittlessample;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,43 +27,37 @@ import static snow.skittlessample.TestUtils.hasSkittleDrawable;
 /**
  * Created by aashrai on 2/7/15.
  */
-@SuppressWarnings("ALL")
-@RunWith(AndroidJUnit4.class)
-@LargeTest
-public class TextSkittlesTest {
+@SuppressWarnings("ALL") @RunWith(AndroidJUnit4.class) @LargeTest public class TextSkittlesTest {
 
+  @Rule public ActivityTestRule<MainActivity> mActivityRule =
+      new ActivityTestRule<>(MainActivity.class);
 
-    @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
-            MainActivity.class);
+  @Test public void textSkittlesTest_sameActivity() {
 
-    @Test
-    public void textSkittlesTest_sameActivity() {
+    Object object = "miniSkittle";
+    onView(
+        allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister)))).check(
+        matches(not(isClickable())));
 
-        Object object = "miniSkittle";
-        onView(allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister))))
-                .check(matches(not(isClickable())));
+    onView(withId(R.id.skittle_main)).check(matches(isClickable()))
+        .check(matches(hasSkittleDrawable(R.drawable.ic_android_white_18dp)))
+        .perform(click());
+    onView(withChild(withText(R.string.house_lannister))).check(matches(isDisplayed()));
+    onView(
+        allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister)))).check(
+        matches(isClickable()))
+        .check(matches(hasSkittleDrawable(R.drawable.lannister_icon)))
+        .check(matches(hasSkittleColor(R.color.lannister)))
+        .perform(click());
+    onView(withText(R.string.house_lannister)).perform(click());
+    onView(withId(R.id.skittle_container)).check(isAbove(withChild(withId(R.id.snackbar_text))));
 
-        onView(withId(R.id.skittle_main))
-                .check(matches(isClickable()))
-                .check(matches(hasSkittleDrawable(R.drawable.ic_android_white_18dp)))
-                .perform(click());
-        onView(withChild(withText(R.string.house_lannister))).check(matches(isDisplayed()));
-        onView(allOf(withTagValue(equalTo(object))
-                , hasSibling(withText(R.string.house_lannister))))
-                .check(matches(isClickable()))
-                .check(matches(hasSkittleDrawable(R.drawable.lannister_icon)))
-                .check(matches(hasSkittleColor(R.color.lannister)))
-                .perform(click());
+    onView(withId(R.id.skittle_container)).check(isAbove(withChild(withId(R.id.snackbar_text))));
 
-        onView(withId(R.id.skittle_container)).check(isAbove(withChild(withId(R.id.snackbar_text))));
-
-        onView(withId(R.id.skittle_main)).perform(click());
-        onView(withChild(withText(R.string.house_lannister))).check(matches(not(isDisplayed())));
-        onView(allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister))))
-                .check(matches(not(isClickable())));
-
-    }
-
-
+    onView(withId(R.id.skittle_main)).perform(click());
+    onView(withChild(withText(R.string.house_lannister))).check(matches(not(isDisplayed())));
+    onView(
+        allOf(withTagValue(equalTo(object)), hasSibling(withText(R.string.house_lannister)))).check(
+        matches(not(isClickable())));
+  }
 }

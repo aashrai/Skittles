@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 
+
 /**
  * Simple extension of FloatingActionButton with some convenience methods
  */

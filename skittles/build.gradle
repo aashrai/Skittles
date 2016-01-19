@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/aashrairavooru/Skittles'
     gitUrl = 'https://github.com/aashrairavooru/Skittles.git'
 
-    libraryVersion = '2.0.0'
+    libraryVersion = '2.1.0'
 
     developerId = 'aashrairavooru'
     developerName = 'Aashrai Ravooru'
@@ -30,8 +30,8 @@ def isTravis = "true".equals(System.getenv("TRAVIS"))
 def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     dexOptions {
         // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
@@ -40,9 +40,9 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "2.1.0"
     }
     buildTypes {
         release {
@@ -74,11 +74,8 @@ if (!isTravis) {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile('com.android.support:design:22.2+') {
-        exclude module: 'com.android.support:appcompat-v7:22.2.0'
-    }
-    compile 'com.android.support:recyclerview-v7:22.2.0'
+    compile('com.android.support:design:23.0.0')
+
 }
 
 task wrapper(type: Wrapper) {

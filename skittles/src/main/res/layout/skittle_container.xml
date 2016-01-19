@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <snow.skittles.SkittleContainer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/skittle_container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom|end"
+    android:layout_gravity="end|bottom"
+    android:padding="20dp"
+    android:baselineAligned="false"
     android:orientation="vertical">
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/skittle_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_weight="1"
+        android:layout_gravity="right|bottom"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="@dimen/fab_margin_bottom"
         android:layout_marginRight="@dimen/fab_margin_right"
         android:src="@drawable/ic_add_white_18dp"
-        app:fabSize="normal" />
+        tools:ignore="RtlHardcoded" />
 
 </snow.skittles.SkittleContainer>

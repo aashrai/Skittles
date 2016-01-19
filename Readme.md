@@ -78,7 +78,7 @@ Flexible callback for clicks:
 ```
 void onSkittleClick(Skittle skittle);
 
-void onTextSkittleClick(TextSkittle textSkittle);
+void onTextSkittleClick(TextSkittle textSkittle, String type);
 ```
 
 Use `skittle.getPosition()` which return the position of the clicked
@@ -101,7 +101,7 @@ public void onSkittleClick(Skittle skittle) {
 
 Similarly for [Text Skittle](skittles/src/main/java/snow/skittles/TextSkittle.java)
 ```
-public void onTextSkittleClick(TextSkittle textSkittle) {
+public void onTextSkittleClick(TextSkittle textSkittle, String type) {
 
   switch (textSkittle.getPosition()) {
     case 1:
@@ -113,6 +113,10 @@ public void onTextSkittleClick(TextSkittle textSkittle) {
   }
 }
 ```
+the argument **type** can be of two types :
+- skittle : when the skittle is clicked
+- text: when the text in the textSkittle is clicked
+
 ##Snackbar Support
 <img src="art/Snackbar.gif" width=196 height=350/>
 <img src="art/SnackbarDismiss.gif" width=196 height=350/>
