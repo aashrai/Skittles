@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 
+import snow.skittles.vectordrawable.VectorDrawableCompat;
+
 /**
  * Simple extension of FloatingActionButton with some convenience methods
  */
@@ -24,6 +26,7 @@ public class Skittle extends FloatingActionButton {
 
     public Skittle(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setImageDrawable(VectorDrawableCompat.createFromResource(getResources(),R.drawable.plus_white));
     }
 
     void setPosition(int position) {
