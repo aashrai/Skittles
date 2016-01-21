@@ -10,6 +10,20 @@ A simple,clean api for adding PushBullet style skittles to your app for more mat
 
 ##Guide ([Sample](sample/src/main/java/snow/skittlessample/MainActivity.java))
 
+####XML attributes support:
+```xml
+<attr name="mainSkittleColor" format="color|reference" />
+<attr name="mainSkittleIcon" format="integer" />
+<attr name="skittleMenuBackgroundMode" format="enum">
+  <enum name="none" value="0"/>
+  <enum name="standard" value="1"/>
+</attr>
+<attr name="skittleStandardBackgroundColor" format="color"/>
+<attr name="skittleStandardBackgroundAlpha" format="float"/>
+<attr name="skittleBackgroundAnimation" format="boolean"/>
+<attr name="skittleBackgroundAnimationDuration" format="integer"/>
+```
+
 First some housekeeping code:
 
 Use
