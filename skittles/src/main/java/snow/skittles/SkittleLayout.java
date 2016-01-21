@@ -6,6 +6,7 @@ import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.IntDef;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,8 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,15 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class SkittleLayout extends CoordinatorLayout implements View.OnClickListener, Animator.AnimatorListener {
 
+    private static final float FADE_IN_ANIMATION_DEFAULT_END_VALUE = 0.6f;
+    private static final int FADE_IN_ANIMATION_DEFAULT_DURATION = 250;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({SKITTLE_NONE_BACKGROUND_MODE, SKITTLE_STANDARD_BACKGROUND_MODE})
+    public @interface SkittleBackgroundMode {}
+    private static final int SKITTLE_NONE_BACKGROUND_MODE = 0;
+    private static final int SKITTLE_STANDARD_BACKGROUND_MODE = 1;
+
     private SkittleContainer skittleContainer;
     private FloatingActionButton skittleMain;
     private static boolean animatable;
@@ -33,6 +45,13 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     private static final List<Float> yList = new ArrayList<Float>();
     private final static LinearInterpolator inInterpolator = new LinearInterpolator();
     private final static OvershootInterpolator outInterpolator = new OvershootInterpolator(5);
+
+    private View skittleWindowBackgroundContainer;
+
+    private int skittleBackgroundMode;
+    private int skittleBackgroundAnimationDuration;
+    private float skittleBackgroundAlpha;
+    private boolean skittleBackgroundAnimation;
 
     public SkittleLayout(Context context) {
         super(context);
@@ -111,12 +130,39 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
             color = array.getResourceId(R.styleable.SkittleLayout_mainSkittleColor
                     , Utils.fetchAccentColor(getContext()));
 
+            setSkittleWindowBackgroundParams(array);
             setMainSkittleColor();
             Drawable drawable = array.getDrawable(R.styleable.SkittleLayout_mainSkittleIcon);
             if (drawable != null)
                 skittleMain.setImageDrawable(drawable);
         } finally {
             array.recycle();
+        }
+
+    }
+
+    private void setSkittleWindowBackgroundParams(TypedArray array) {
+        skittleBackgroundMode = array.getInt(R.styleable.SkittleLayout_skittleMenuBackgroundMode,
+                SKITTLE_NONE_BACKGROUND_MODE);
+
+        switch (skittleBackgroundMode) {
+            case SKITTLE_STANDARD_BACKGROUND_MODE:
+                skittleWindowBackgroundContainer = LayoutInflater.from(getContext())
+                        .inflate(R.layout.view_menu_window_background, this, false);
+
+                skittleWindowBackgroundContainer.setBackgroundColor(array.getColor(R.styleable.SkittleLayout_skittleStandardBackgroundColor,
+                                Utils.fetchAccentColor(getContext())));
+                skittleWindowBackgroundContainer.setAlpha(
+                        array.getFloat(R.styleable.SkittleLayout_skittleStandardBackgroundColor, FADE_IN_ANIMATION_DEFAULT_END_VALUE));
+
+                skittleBackgroundAnimationDuration = array.getInt(R.styleable.SkittleLayout_skittleBackgroundAnimationDuration,
+                        FADE_IN_ANIMATION_DEFAULT_DURATION);
+                skittleBackgroundAnimation = array.getBoolean(R.styleable.SkittleLayout_skittleBackgroundAnimation, false);
+                skittleBackgroundAlpha = array.getFloat(R.styleable.SkittleLayout_skittleStandardBackgroundAlpha, FADE_IN_ANIMATION_DEFAULT_END_VALUE);
+                break;
+            case SKITTLE_NONE_BACKGROUND_MODE:
+            default:
+                break;
         }
 
     }
@@ -157,6 +203,8 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
     }
 
     public void animateMiniSkittles() {
+        animateSkittleBackground();
+
         View child;
         int COUNT = skittleContainer.getChildCount();
         if (getMainSkittleAnimatable())
@@ -185,6 +233,34 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
                 }
             }
             flag = 0;
+        }
+
+    }
+
+    private void animateSkittleBackground() {
+        if (skittleBackgroundMode == SKITTLE_NONE_BACKGROUND_MODE) {
+            return;
+        }
+
+        ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(skittleWindowBackgroundContainer, "alpha", 0, skittleBackgroundAlpha);
+        fadeInAnimator.setInterpolator(new LinearInterpolator());
+        fadeInAnimator.setDuration(skittleBackgroundAnimationDuration);
+
+        switch (flag) {
+            case 0:
+                addView(skittleWindowBackgroundContainer);
+                if (skittleBackgroundAnimation) {
+                    fadeInAnimator.start();
+                } else {
+                    skittleWindowBackgroundContainer.setAlpha(skittleBackgroundAlpha);
+                }
+                break;
+            case 1:
+                if (skittleBackgroundAnimation) {
+                    fadeInAnimator.reverse();
+                }
+                removeView(skittleWindowBackgroundContainer);
+                break;
         }
     }
 

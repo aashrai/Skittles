@@ -1,12 +1,16 @@
-<snow.skittles.SkittleLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/skittleLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    app:mainSkittleIcon="@drawable/ic_android_white_18dp"
-    tools:context=".MainActivity">
+<snow.skittles.SkittleLayout android:id="@+id/skittleLayout"
+                             xmlns:android="http://schemas.android.com/apk/res/android"
+                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                             xmlns:tools="http://schemas.android.com/tools"
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:fitsSystemWindows="true"
+                             app:mainSkittleIcon="@drawable/ic_android_white_18dp"
+                             app:skittleMenuBackgroundMode="standard"
+                             app:skittleBackgroundAnimation="true"
+                             app:skittleBackgroundAnimationDuration="300"
+                             app:skittleStandardBackgroundColor="@color/cardview_dark_background"
+                             tools:context=".MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
