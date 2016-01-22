@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="@dimen/skittle_margin_top"
     android:layout_gravity="right|bottom"
-    tools:ignore="RtlHardcoded" />
+    tools:ignore="RtlHardcoded"/>
