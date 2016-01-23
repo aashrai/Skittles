@@ -29,7 +29,7 @@ First some housekeeping code:
 Use
 [SkittleLayout](skittles/src/main/java/snow/skittles/SkittleLayout.java) as a root view in your layouts
 
-```
+```xml
 <snow.skittles.SkittleLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
@@ -56,7 +56,7 @@ Some further housekeeping...
 
 Declare a [SkittleBuilder](skittles/src/main/java/snow/skittles/SkittleBuilder.java),used to add skittles and pass the root SkittleLayout to it
 
-```
+```java
 SkittleLayout skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
 SkittleBuilder skittleBuilder = new SkittleBuilder(this, skittleLayout, false, R.color.material_deep_purple_500, R.color.material_deep_teal_500);
 
@@ -66,7 +66,7 @@ Now for the fun part
 
 Add skittles to your activity/fragment
 
-```
+```java
 skittleBuilder.addSkittle(R.drawable.lannister_icon, R.color.lannister);
 skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
 skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
@@ -74,7 +74,7 @@ skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
 
 Add [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) to your activity/fragment
 
-```
+```java
 skittleBuilder.makeTextSkittle(getResources().getString(R.string.house_lannister)
                 , R.drawable.lannister_icon)
                 .setSkittleColor(R.color.lannister)
@@ -89,7 +89,7 @@ Flexible callback for clicks:
 
 + This exposes two methods for [Skittle](skittles/src/main/java/snow/skittles/Skittle.java) and [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) click events for convenience
 
-```
+```java
 void onSkittleClick(Skittle skittle);
 
 void onTextSkittleClick(TextSkittle textSkittle, String type);
@@ -98,7 +98,7 @@ void onTextSkittleClick(TextSkittle textSkittle, String type);
 Use `skittle.getPosition()` which return the position of the clicked
 skittle starting from **1** and starting from **bottom**
 
-```
+```java
 public void onSkittleClick(Skittle skittle) {
 
   switch (skittle.getPosition()) {
@@ -114,7 +114,7 @@ public void onSkittleClick(Skittle skittle) {
 ```
 
 Similarly for [Text Skittle](skittles/src/main/java/snow/skittles/TextSkittle.java)
-```
+```java
 public void onTextSkittleClick(TextSkittle textSkittle, String type) {
 
   switch (textSkittle.getPosition()) {
@@ -137,15 +137,15 @@ the argument **type** can be of two types :
 
 When using snackbars ensure that you use [SkittleContainer](skittles/src/main/java/snow/skittles/SkittleContainer.java)
 
-```
+```java
 Snackbar.make(skittleLayout.getSkittleContainer(), "Skittle Pressed", Snackbar.LENGTH_LONG)
 .show();
 ```
 
 ##Gradle
-```
+```groovy
 dependencies{
-compile 'com.rlj.library:skittles:2.1.0'
+compile 'com.rlj.library:skittles:2.1.1'
 }
 ```
 

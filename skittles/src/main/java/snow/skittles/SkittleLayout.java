@@ -47,11 +47,11 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnClickList
 
     private SkittleContainer skittleContainer;
     private FloatingActionButton skittleMain;
-    private static boolean animatable;
-    private static int flag = 0, color;
-    private static final List<Float> yList = new ArrayList<Float>();
-    private final static LinearInterpolator inInterpolator = new LinearInterpolator();
-    private final static OvershootInterpolator outInterpolator = new OvershootInterpolator(5);
+    private  boolean animatable;
+    private int flag = 0, color;
+    private final List<Float> yList = new ArrayList<Float>();
+    private final LinearInterpolator inInterpolator = new LinearInterpolator();
+    private final OvershootInterpolator outInterpolator = new OvershootInterpolator(5);
 
     private UnderlayViewProcessor underlayViewProcessor;
     private ObjectAnimator fadeInAnimator;

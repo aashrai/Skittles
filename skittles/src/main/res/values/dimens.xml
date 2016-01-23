@@ -8,5 +8,6 @@
 
     <dimen name="text_skittle_padding">5dp</dimen>
     <dimen name="text_skittle_text_size">14sp</dimen>
+  <dimen name="skittle_margin_top">10dp</dimen>
 
 </resources>
