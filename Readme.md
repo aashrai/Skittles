@@ -150,7 +150,7 @@ The library supports three modes:
 - blur
 
 <img src="art/SampleStandard.gif" width=196 height=350/>
-<img src="art/BlurStandard.gif" width=196 height=350/>
+<img src="art/SampleBlur.gif" width=196 height=350/>
 
 
 ##Gradle
