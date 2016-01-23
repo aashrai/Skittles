@@ -17,6 +17,7 @@ A simple,clean api for adding PushBullet style skittles to your app for more mat
 <attr name="skittleMenuBackgroundMode" format="enum">
   <enum name="none" value="0"/>
   <enum name="standard" value="1"/>
+  <enum name="blur" value="2"/>
 </attr>
 <attr name="skittleStandardBackgroundColor" format="color"/>
 <attr name="skittleStandardBackgroundAlpha" format="float"/>
@@ -141,6 +142,16 @@ When using snackbars ensure that you use [SkittleContainer](skittles/src/main/ja
 Snackbar.make(skittleLayout.getSkittleContainer(), "Skittle Pressed", Snackbar.LENGTH_LONG)
 .show();
 ```
+
+##Underlay Support
+The library supports three modes:
+- none
+- standard
+- blur
+
+<img src="art/SampleStandard.gif" width=196 height=350/>
+<img src="art/BlurStandard.gif" width=196 height=350/>
+
 
 ##Gradle
 ```groovy
