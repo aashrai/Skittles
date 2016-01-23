@@ -6,6 +6,10 @@
                              android:layout_height="match_parent"
                              android:fitsSystemWindows="true"
                              app:mainSkittleIcon="@drawable/ic_android_white_18dp"
+                             app:skittleMenuBackgroundMode="blur"
+                             app:skittleBackgroundAnimation="true"
+                             app:skittleBackgroundAnimationDuration="250"
+                             app:skittleStandardBackgroundAlpha="1"
                              app:skittleStandardBackgroundColor="@color/cardview_dark_background"
                              tools:context=".MainActivity">
 

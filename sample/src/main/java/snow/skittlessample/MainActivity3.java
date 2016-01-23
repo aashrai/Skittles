@@ -22,7 +22,7 @@ import snow.skittles.TextSkittle;
  * Created by aashrai on 3/7/15.
  * Clone of @link MainActivity.class meant for testing
  */
-public class MainActivity2 extends AppCompatActivity
+public class MainActivity3 extends AppCompatActivity
     implements SkittleBuilder.SkittleClickListener {
 
   SkittleLayout skittleLayout;
@@ -34,7 +34,7 @@ public class MainActivity2 extends AppCompatActivity
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.activity_underlay_standard_main);
     skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
     skittleBuilder = new SkittleBuilder.Builder(this, skittleLayout).animatable(false)
         .mainSkittleColor(R.color.material_deep_purple_500)
