@@ -44,8 +44,9 @@ Declare a [SkittleBuilder](skittles/src/main/java/snow/skittles/SkittleBuilder.j
 
 ```java
 SkittleLayout skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-SkittleBuilder skittleBuilder = new SkittleBuilder(this, skittleLayout, false, R.color.material_deep_purple_500, R.color.material_deep_teal_500);
-
+SkittleBuilder builder = new SkittleBuilder.Builder(this, skittleLayout)
+   .mainSkittleColor(R.color.accent)
+   .build();
 ```
 
 Now for the fun part
