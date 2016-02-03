@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.FloatingActionButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/skittle"
+    android:gravity="end"
+    android:layout_width="wrap_content"
+    app:fabSize="mini"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_add_white_18dp"
+/>

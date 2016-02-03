@@ -7,5 +7,5 @@
     android:layout_height="wrap_content"
     android:layout_gravity="end|bottom"
     android:layout_marginBottom="@dimen/fab_margin_bottom"
-    android:layout_marginRight="@dimen/mini_fab_margin_right"
+    android:layout_marginRight="@dimen/mini_fab_margin"
     tools:ignore="RtlHardcoded" />

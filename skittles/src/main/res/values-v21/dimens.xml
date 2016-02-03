@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fab_margin_right">16dp</dimen>
-    <dimen name="fab_margin_bottom">16dp</dimen>
+  <dimen name="fab_margin_right">16dp</dimen>
+  <dimen name="fab_margin_bottom">16dp</dimen>
 
-    <dimen name="mini_fab_margin_right">24dp</dimen>
-    <dimen name="skittle_title_margin_right">94dp</dimen>
-    <dimen name="skittle_title_margin_bottom">8dp</dimen>
+  <dimen name="skittle_title_margin_right">94dp</dimen>
+  <dimen name="skittle_title_margin_bottom">8dp</dimen>
 </resources>

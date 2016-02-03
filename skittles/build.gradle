@@ -1,85 +1,84 @@
 apply plugin: 'com.android.library'
 
 ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'Skittles'
+  bintrayRepo = 'maven'
+  bintrayName = 'Skittles'
 
-    publishedGroupId = 'com.rlj.library'
-    libraryName = 'Skittles'
-    artifact = 'skittles'
+  publishedGroupId = 'com.rlj.library'
+  libraryName = 'Skittles'
+  artifact = 'skittles'
 
-    libraryDescription = 'A simple,clean api for adding PushBullet style skittles ' +
-            'to your app for more material design glory.This library uses the ' +
-            'FloatingActionButton provided in the android design support library'
+  libraryDescription = 'A simple,clean api for adding PushBullet style skittles ' +
+      'to your app for more material design glory.This library uses the ' +
+      'FloatingActionButton provided in the android design support library'
 
-    siteUrl = 'https://github.com/aashrairavooru/Skittles'
-    gitUrl = 'https://github.com/aashrairavooru/Skittles.git'
+  siteUrl = 'https://github.com/aashrairavooru/Skittles'
+  gitUrl = 'https://github.com/aashrairavooru/Skittles.git'
 
-    libraryVersion = '2.1.1'
+  libraryVersion = '2.1.1'
 
-    developerId = 'aashrairavooru'
-    developerName = 'Aashrai Ravooru'
-    developerEmail = 'ashrair@gmail.com'
+  developerId = 'aashrairavooru'
+  developerName = 'Aashrai Ravooru'
+  developerEmail = 'ashrair@gmail.com'
 
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
 }
 
 def isTravis = "true".equals(System.getenv("TRAVIS"))
 def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+  compileSdkVersion 23
+  buildToolsVersion "23.0.2"
 
-    dexOptions {
-        // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
-        preDexLibraries = preDexEnabled && !isTravis
-    }
+  dexOptions {
+    // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
+    preDexLibraries = preDexEnabled && !isTravis
+  }
 
-    defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "2.1.0"
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 23
+    versionCode 1
+    versionName "2.1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 
-    packagingOptions {
-        exclude 'LICENSE.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
+  packagingOptions {
+    exclude 'LICENSE.txt'
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/LICENSE.txt'
+  }
 
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
+  lintOptions {
+    abortOnError false
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+  }
 }
 
 if (!isTravis) {
-    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+  apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+  apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+}
+
+ext {
+  supportLibVersion = "23.1.1"
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile('com.android.support:design:23.0.0')
-
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile "com.android.support:design:$supportLibVersion"
+  compile "com.android.support:recyclerview-v7:$supportLibVersion"
 }
 
 

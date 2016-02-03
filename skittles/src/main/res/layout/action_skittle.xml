@@ -4,7 +4,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="end|bottom"
-    android:layout_marginRight="@dimen/mini_fab_margin_right"
     android:layout_marginTop="@dimen/skittle_margin_top"
     android:tag="@string/miniSkittle"
     app:fabSize="mini">

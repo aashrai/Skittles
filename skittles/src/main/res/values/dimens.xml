@@ -1,13 +1,17 @@
 <resources>
-    <dimen name="fab_margin_right">0.1dp</dimen>
-    <dimen name="fab_margin_bottom">0.1dp</dimen>
+  <dimen name="fab_margin_right">0.1dp</dimen>
+  <dimen name="fab_margin_bottom">0.1dp</dimen>
+  <dimen name="fab_mini_margin_bottom">8dp</dimen>
 
-    <dimen name="mini_fab_margin_right">8dp</dimen>
-    <dimen name="skittle_title_margin_right">70dp</dimen>
-    <dimen name="skittle_title_margin_bottom">0dp</dimen>
+  <dimen name="mini_fab_margin">8dp</dimen>
+  <dimen name="skittle_title_margin_right">70dp</dimen>
+  <dimen name="skittle_title_margin_bottom">0dp</dimen>
 
-    <dimen name="text_skittle_padding">5dp</dimen>
-    <dimen name="text_skittle_text_size">14sp</dimen>
+  <dimen name="text_skittle_padding">5dp</dimen>
+  <dimen name="text_skittle_text_size">14sp</dimen>
   <dimen name="skittle_margin_top">10dp</dimen>
 
+  <dimen name="skittle_size">56dp</dimen>
+  <dimen name="skittle_mini_size">40dp</dimen>
+  <dimen name="recycler_view_width">500dp</dimen>
 </resources>
