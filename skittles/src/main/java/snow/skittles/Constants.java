@@ -1,4 +1,4 @@
-package snow.skittles.rehash;
+package snow.skittles;
 
 /**
  * Created by aashrai on 2/2/16.

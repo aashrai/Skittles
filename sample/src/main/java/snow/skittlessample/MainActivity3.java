@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import snow.skittles.rehash.Skittle;
-import snow.skittles.rehash.SkittleBuilder;
-import snow.skittles.rehash.SkittleLayout;
-import snow.skittles.rehash.TextSkittle;
+import snow.skittles.Skittle;
+import snow.skittles.SkittleBuilder;
+import snow.skittles.SkittleLayout;
+import snow.skittles.TextSkittle;
 
 /**
  * Created by aashrai on 3/2/16.

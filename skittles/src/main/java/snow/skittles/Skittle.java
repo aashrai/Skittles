@@ -1,58 +1,47 @@
 package snow.skittles;
 
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.util.AttributeSet;
-
+import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 
 /**
- * Simple extension of FloatingActionButton with some convenience methods
+ * Created by aashrai on 2/2/16.
  */
-public class Skittle extends FloatingActionButton {
-    private int position;
-    private boolean clickable;
-    private ColorStateList mBackgroundColorStateList;
+public class Skittle implements BaseSkittle {
+  private @ColorInt int color;
+  private Drawable drawable;
+  private final @SkittleType int type;
 
-    public Skittle(Context context) {
-        super(context);
-    }
+  private Skittle(@ColorInt int color, Drawable drawable, int type) {
+    this.color = color;
+    this.drawable = drawable;
+    this.type = type;
+  }
 
-    public Skittle(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+  public static Skittle newInstance(@ColorInt int color, Drawable drawable) {
+    return new Skittle(color, drawable, Constants.SKITTLE);
+  }
 
-    public Skittle(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+  static Skittle newMainSkittleInstance(@ColorInt int color, Drawable drawable) {
+    return new Skittle(color, drawable, Constants.MAIN_SKITTLE);
+  }
 
-    void setPosition(int position) {
-        this.position = position;
-    }
+  @Override public void setIconDrawable(Drawable drawable) {
+    this.drawable = drawable;
+  }
 
-    public int getPosition() {
-        return position;
-    }
+  @Override public Drawable getIcon() {
+    return drawable;
+  }
 
-    void setClickability(boolean clickable) {
-        this.clickable = clickable;
-    }
+  @Override public void setColor(@ColorInt int color) {
+    this.color = color;
+  }
 
-    @Override
-    public boolean isClickable() {
-        return clickable;
-    }
+  @Override @ColorInt public int getColor() {
+    return color;
+  }
 
-    @Override
-    public void setBackgroundTintList(ColorStateList tint) {
-        super.setBackgroundTintList(tint);
-        mBackgroundColorStateList = tint;
-    }
-
-    @Nullable
-    @Override
-    public ColorStateList getBackgroundTintList() {
-        return mBackgroundColorStateList;
-    }
+  @Override public int getType() {
+    return type;
+  }
 }

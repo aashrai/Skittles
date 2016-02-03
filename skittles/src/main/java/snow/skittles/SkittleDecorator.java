@@ -1,10 +1,9 @@
-package snow.skittles.rehash;
+package snow.skittles;
 
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import snow.skittles.R;
 
 /**
  * Created by aashrai on 3/2/16.

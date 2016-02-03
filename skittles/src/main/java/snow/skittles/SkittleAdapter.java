@@ -1,4 +1,4 @@
-package snow.skittles.rehash;
+package snow.skittles;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
-import snow.skittles.R;
 
 /**
  * Created by aashrai on 2/2/16.

@@ -1,57 +1,81 @@
 package snow.skittles;
 
-import android.content.Context;
-import android.support.design.widget.FloatingActionButton;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 
 /**
- *
+ * Created by aashrai on 2/2/16.
  */
-public class TextSkittle extends FrameLayout {
+public class TextSkittle implements BaseSkittle {
 
-    private int position;
-    TextView textView;
-    FloatingActionButton miniSkittle;
+  private String text;
+  private @ColorInt int color;
+  private Drawable icon;
+  private @ColorInt int textBackground;
 
-    public TextSkittle(Context context) {
-        super(context);
+  private TextSkittle(String text, int color, Drawable drawable, int textBackground) {
+    this.text = text;
+    this.color = color;
+    this.icon = drawable;
+    this.textBackground = textBackground;
+  }
+
+  public static class Builder {
+    private final String text;
+    private final @ColorInt int color;
+    private final Drawable icon;
+    private @ColorInt int textBackground;
+
+    public Builder(String text, int color, Drawable drawable) {
+      this.text = text;
+      this.color = color;
+      icon = drawable;
+      textBackground = 0x7f0b0014;//light background
     }
 
-    public TextSkittle(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        setTag(getResources().getString(R.string.text_skittle_tag));
-        textView = (TextView) LayoutInflater.from(getContext())
-                .inflate(R.layout.text_skittle_text_view, this, false);
-        addView(textView);
-        miniSkittle = (FloatingActionButton) LayoutInflater.from(getContext())
-                .inflate(R.layout.action_skittle, this, false);
-        addView(miniSkittle);
+    public Builder setTextBackground(@ColorInt int textBackground) {
+      this.textBackground = textBackground;
+      return this;
     }
 
-    public TextSkittle(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public TextSkittle build() {
+      return new TextSkittle(text, color, icon, textBackground);
     }
+  }
 
-    public int getPosition() {
-        return position;
-    }
+  public void setTextBackground(@ColorInt int color) {
+    textBackground = color;
+  }
 
-    void setPosition(int position) {
-        this.position = position;
-    }
+  @Override public void setIconDrawable(Drawable drawable) {
+    this.icon = drawable;
+  }
 
-    Skittle getSkittle() {
-        return (Skittle) getChildAt(1);
-    }
+  @Override public Drawable getIcon() {
+    return icon;
+  }
 
-    TextView getTextView() {
-        return textView;
-    }
+  @Override public void setColor(@ColorInt int color) {
+    this.color = color;
+  }
 
-    public String getText() {
-        return textView.getText().toString();
-    }
+  @Override public int getColor() {
+    return color;
+  }
+
+  @Override public int getType() {
+    return Constants.TEXT_SKITTLE;
+  }
+
+  public int getTextBackground() {
+    return textBackground;
+  }
+
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
 }

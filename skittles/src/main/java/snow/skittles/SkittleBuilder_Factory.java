@@ -1,4 +1,4 @@
-package snow.skittles.rehash;
+package snow.skittles;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;

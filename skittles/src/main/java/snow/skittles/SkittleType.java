@@ -1,4 +1,4 @@
-package snow.skittles.rehash;
+package snow.skittles;
 
 import android.support.annotation.IntDef;
 import java.lang.annotation.Retention;
