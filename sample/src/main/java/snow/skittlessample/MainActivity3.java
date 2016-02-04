@@ -26,13 +26,13 @@ public class MainActivity3 extends AppCompatActivity
     skittleBuilder.addSkittle(Skittle.newInstance(ContextCompat.getColor(this, R.color.barratheon),
         ContextCompat.getDrawable(this, R.drawable.barratheon_icon)));
 
-    skittleBuilder.addSkittle(Skittle.newInstance(ContextCompat.getColor(this, R.color.lannister),
-        ContextCompat.getDrawable(this, R.drawable.lannister_icon)));
-
     skittleBuilder.addSkittle(
         new TextSkittle.Builder("Hello", ContextCompat.getColor(this, R.color.stark),
             ContextCompat.getDrawable(this, R.drawable.stark_icon)).setTextBackground(
             ContextCompat.getColor(this, android.R.color.background_light)).build());
+
+    skittleBuilder.addSkittle(Skittle.newInstance(ContextCompat.getColor(this, R.color.lannister),
+        ContextCompat.getDrawable(this, R.drawable.lannister_icon)));
     skittleBuilder.setSkittleClickListener(this);
   }
 

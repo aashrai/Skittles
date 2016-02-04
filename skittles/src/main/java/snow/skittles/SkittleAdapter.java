@@ -134,7 +134,6 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
   }
 
   class MainSkittleViewHolder extends SkittleViewHolder implements View.OnClickListener {
-
     public MainSkittleViewHolder(View itemView) {
       super(itemView);
       itemView.setOnClickListener(this);
@@ -151,7 +150,7 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public SkittleViewHolder(View itemView) {
       super(itemView);
-      skittle = (FloatingActionButton) itemView;
+      skittle = (FloatingActionButton) itemView.findViewById(R.id.skittle);
       skittle.setOnClickListener(this);
     }
 

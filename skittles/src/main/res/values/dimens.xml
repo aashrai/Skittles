@@ -13,5 +13,5 @@
 
   <dimen name="skittle_size">56dp</dimen>
   <dimen name="skittle_mini_size">40dp</dimen>
-  <dimen name="recycler_view_width">500dp</dimen>
+  <dimen name="recycler_view_width">1500dp</dimen>
 </resources>
