@@ -6,7 +6,7 @@ import android.support.annotation.ColorInt;
 /**
  * A contract to be implemented by a Skittle class
  */
-interface BaseSkittle {
+public interface BaseSkittle {
 
   void setIconDrawable(Drawable drawable);
 

@@ -2,9 +2,9 @@ package snow.skittlessample;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import snow.skittles.BaseSkittle;
 import snow.skittles.Skittle;
 import snow.skittles.SkittleBuilder;
@@ -37,17 +37,10 @@ public class MainActivity3 extends AppCompatActivity
   }
 
   @Override public void onSkittleClick(BaseSkittle skittle, int position) {
-    Log.d("MainActivity", "onSkittleClick() called with: "
-        + "skittle = ["
-        + skittle
-        + "], position = ["
-        + position
-        + "]");
+    Snackbar.make(findViewById(R.id.skittle_container), "This is a snackbar", Snackbar.LENGTH_SHORT)
+        .show();
   }
 
   @Override public void onMainSkittleClick() {
-    Log.d("MainActivity", "onMainSkittleClick: ");
-    //Snackbar.make(findViewById(R.id.skittle_container), "This is a snackbar", Snackbar.LENGTH_SHORT)
-    //    .show();
   }
 }

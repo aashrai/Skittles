@@ -4,7 +4,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +11,18 @@ import java.util.List;
  * Created by aashrai on 3/2/16.
  */
 public class SkittleBuilder
-    implements SkittleBuilder_Factory, SkittleAdapter.MainSkittleClickListener {
+    implements SkittleBuilder_Factory, SkittleAdapter.OnSkittleClickListener {
 
   private final SkittleAdapter skittleAdapter;
   private final List<BaseSkittle> skittles;
   boolean miniSkittlesAdded = false;
+  OnSkittleClickListener skittleClickListener;
+
+  public interface OnSkittleClickListener {
+    void onSkittleClick(BaseSkittle skittle, int position);
+
+    void onMainSkittleClick();
+  }
 
   private SkittleBuilder(SkittleLayout skittleLayout) {
     this.skittleAdapter = skittleLayout.getSkittleAdapter();
@@ -49,13 +55,26 @@ public class SkittleBuilder
     skittleAdapter.changeSkittleAt(index + 1, skittle);//Adding 1 to account for main skittle
   }
 
-  @Override public void onMainSkittleClick() {
-    Log.d("SkittleBuilder", "onMainSkittleClick: ");
+  private void onMainSkittleClick() {
     if (!miniSkittlesAdded) {
       skittleAdapter.addAllSkittles(skittles);
     } else {
       skittleAdapter.removeAllMiniSkittles();
     }
     miniSkittlesAdded = !miniSkittlesAdded;
+    if (skittleClickListener != null) skittleClickListener.onMainSkittleClick();
+  }
+
+  public void setSkittleClickListener(OnSkittleClickListener skittleClickListener) {
+    this.skittleClickListener = skittleClickListener;
+  }
+
+  @Override public void onSkittleClick(BaseSkittle skittle, int position) {
+    if (position == 0) {
+      onMainSkittleClick();
+    } else {
+      //Subtract the position to make it start from the first mini skittle instead of the main skittle
+      skittleClickListener.onSkittleClick(skittle, position - 1);
+    }
   }
 }

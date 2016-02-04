@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -16,7 +15,7 @@ import android.view.LayoutInflater;
  */
 public class SkittleLayout extends CoordinatorLayout {
 
-  RecyclerView skittleContainer;
+  SkittleContainer skittleContainer;
 
   public SkittleLayout(Context context) {
     super(context);
@@ -37,7 +36,7 @@ public class SkittleLayout extends CoordinatorLayout {
     } finally {
       array.recycle();
     }
-    skittleContainer = (RecyclerView) LayoutInflater.from(context)
+    skittleContainer = (SkittleContainer) LayoutInflater.from(context)
         .inflate(R.layout.skittle_container, this, false);
     SkittleAdapter skittleAdapter = new SkittleAdapter(color, drawable);
     skittleContainer.setLayoutManager(

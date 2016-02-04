@@ -20,10 +20,10 @@ import java.util.List;
 class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   private final List<BaseSkittle> skittles = new ArrayList<>();
-  private MainSkittleClickListener mainSkittleClickListener;
+  private OnSkittleClickListener onSkittleClickListener;
 
-  interface MainSkittleClickListener {
-    void onMainSkittleClick();
+  interface OnSkittleClickListener {
+    void onSkittleClick(BaseSkittle skittle, int position);
   }
 
   /**
@@ -141,21 +141,29 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override public void onClick(View v) {
-      if (mainSkittleClickListener != null) mainSkittleClickListener.onMainSkittleClick();
+      if (onSkittleClickListener != null) onSkittleClickListener.onSkittleClick(skittles.get(0), 0);
     }
   }
 
-  class SkittleViewHolder extends RecyclerView.ViewHolder {
+  class SkittleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     FloatingActionButton skittle;
 
     public SkittleViewHolder(View itemView) {
       super(itemView);
       skittle = (FloatingActionButton) itemView;
+      skittle.setOnClickListener(this);
+    }
+
+    @Override public void onClick(View v) {
+      if (onSkittleClickListener != null) {
+        onSkittleClickListener.onSkittleClick(skittles.get(getAdapterPosition()),
+            getAdapterPosition());
+      }
     }
   }
 
-  class TextSkittleViewHolder extends RecyclerView.ViewHolder {
+  class TextSkittleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView text;
     FloatingActionButton skittle;
 
@@ -163,10 +171,19 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       super(itemView);
       text = (TextView) itemView.findViewById(R.id.tv_skittle);
       skittle = (FloatingActionButton) itemView.findViewById(R.id.skittle);
+      text.setOnClickListener(this);
+      skittle.setOnClickListener(this);
+    }
+
+    @Override public void onClick(View v) {
+      if (onSkittleClickListener != null) {
+        onSkittleClickListener.onSkittleClick(skittles.get(getAdapterPosition()),
+            getAdapterPosition());
+      }
     }
   }
 
-  public void setMainSkittleClickListener(MainSkittleClickListener mainSkittleClickListener) {
-    this.mainSkittleClickListener = mainSkittleClickListener;
+  public void setMainSkittleClickListener(OnSkittleClickListener skittleClickListener) {
+    this.onSkittleClickListener = skittleClickListener;
   }
 }
