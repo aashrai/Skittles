@@ -44,7 +44,7 @@ Declare a [SkittleBuilder](skittles/src/main/java/snow/skittles/SkittleBuilder.j
 
 ```java
 SkittleLayout skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-SkittleBuilder skittleBuilder = new SkittleBuilder(this, skittleLayout, false, R.color.material_deep_purple_500, R.color.material_deep_teal_500);
+SkittleBuilder skittleBuilder = SkittleBuilder.newInstance((SkittleLayout) findViewById(R.id.skittleLayout));
 
 ```
 
@@ -53,18 +53,18 @@ Now for the fun part
 Add skittles to your activity/fragment
 
 ```java
-skittleBuilder.addSkittle(R.drawable.lannister_icon, R.color.lannister);
-skittleBuilder.addSkittle(R.drawable.barratheon_icon, R.color.barratheon);
-skittleBuilder.addSkittle(R.drawable.stark_icon, R.color.stark);
+skittleBuilder.addSkittle(Skittle.newInstance(ContextCompat.getColor(this, R.color.barratheon),
+        ContextCompat.getDrawable(this, R.drawable.barratheon_icon)));
+skittleBuilder.addSkittle(Skittle.newInstance(ContextCompat.getColor(this, R.color.lannister),
+        ContextCompat.getDrawable(this, R.drawable.lannister_icon)));
 ```
 
 Add [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) to your activity/fragment
 
 ```java
-skittleBuilder.makeTextSkittle(getResources().getString(R.string.house_lannister)
-                , R.drawable.lannister_icon)
-                .setSkittleColor(R.color.lannister)
-                .setTextBackground(R.color.textBackground).add();
+ skittleBuilder.addSkittle(new TextSkittle.Builder("Hello", ContextCompat.getColor(this, R.color.stark),
+            ContextCompat.getDrawable(this, R.drawable.stark_icon)).setTextBackground(
+            ContextCompat.getColor(this, android.R.color.background_light)).build());
 
 ```
 
@@ -73,49 +73,26 @@ Flexible callback for clicks:
 + Add a click listener(SkittleBuilder.SkittleClickListener) to the [SkittleBuilder](skittles/src/main/java/snow/skittles/SkittleBuilder.java) object
 `skittleBuilder.setSkittleListener(this);`
 
-+ This exposes two methods for [Skittle](skittles/src/main/java/snow/skittles/Skittle.java) and [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) click events for convenience
++ This exposes two methods for Skittle and MainSkittle click events
 
 ```java
-void onSkittleClick(Skittle skittle);
+void onSkittleClick(BaseSkittle skittle, int position); 
 
-void onTextSkittleClick(TextSkittle textSkittle, String type);
+void onMainSkittleClick();
 ```
-
-Use `skittle.getPosition()` which return the position of the clicked
-skittle starting from **1** and starting from **bottom**
+[BaseSkittle](skittles/src/main/java/snow/skittles/BaseSkittle.java) is an interface that every skittle implements
 
 ```java
-public void onSkittleClick(Skittle skittle) {
-
-  switch (skittle.getPosition()) {
-    case 1:
-    Toast.makeText(this, "Skittle 1", Toast.LENGTH_LONG).show();
-    break;
-    case 2:
-    Toast.makeText(this, "Skittle 2", Toast.LENGTH_LONG).show();
-    break;
-  }
-
+public void onSkittleClick(BaseSkittle skittle, int position) {
+  if(skittle instanceOf TextSkittle)
+   ...
+  else if(skittle instanceOf Skittle)
+   ...
 }
 ```
+Here the `position` does not include the mainSkittle and starts from `0`
 
-Similarly for [Text Skittle](skittles/src/main/java/snow/skittles/TextSkittle.java)
-```java
-public void onTextSkittleClick(TextSkittle textSkittle, String type) {
-
-  switch (textSkittle.getPosition()) {
-    case 1:
-    Toast.makeText(this, "Skittle 1", Toast.LENGTH_LONG).show();
-    break;
-    case 2:
-    Toast.makeText(this, "Skittle 2", Toast.LENGTH_LONG).show();
-    break;
-  }
-}
-```
-the argument **type** can be of two types :
-- skittle : when the skittle is clicked
-- text: when the text in the textSkittle is clicked
+You can now create your very own Skittle you just have to implement the [BaseSkittle](skittles/src/main/java/snow/skittles/BaseSkittle.java), check [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) or [Skittle](skittles/src/main/java/snow/skittles/Skittle.java)
 
 ##Snackbar Support
 <img src="art/Snackbar.gif" width=196 height=350/>
