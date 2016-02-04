@@ -9,6 +9,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import java.util.List;
 
@@ -27,6 +28,14 @@ public class SkittleContainer extends RecyclerView {
 
   public SkittleContainer(Context context, @Nullable AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
+  }
+
+  @Override public boolean onTouchEvent(MotionEvent e) {
+    return false;
+  }
+
+  @Override public boolean onInterceptTouchEvent(MotionEvent e) {
+    return false;
   }
 
   @SuppressWarnings("unused") public static class FloatingLayoutBehavior
