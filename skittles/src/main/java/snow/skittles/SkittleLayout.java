@@ -63,12 +63,12 @@ public class SkittleLayout extends CoordinatorLayout {
 
   @Override public void addView(View child, int width, int height) {
     super.addView(child, width, height);
-    if (getChildCount() != 1) addSkittleOnTop();
+    if (getChildCount() != 1 && !(child instanceof Snackbar.SnackbarLayout)) addSkittleOnTop();
   }
 
   @Override public void addView(View child, ViewGroup.LayoutParams params) {
     super.addView(child, params);
-    if (getChildCount() != 1) addSkittleOnTop();
+    if (getChildCount() != 1 && !(child instanceof Snackbar.SnackbarLayout)) addSkittleOnTop();
   }
 
   /**

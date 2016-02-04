@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
@@ -96,9 +95,6 @@ public class ItemAnimator extends DefaultItemAnimator {
     DisplayMetrics displayMetrics = new DisplayMetrics();
     ((WindowManager) holder.itemView.getContext()
         .getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displayMetrics);
-    int translation =
-        displayMetrics.heightPixels - holder.itemView.getTop() - 2 * holder.itemView.getHeight();
-    Log.d("SkittleAnimator", "getExitTranslation: " + translation);
-    return translation;
+    return displayMetrics.heightPixels - holder.itemView.getTop() - 2 * holder.itemView.getHeight();
   }
 }
