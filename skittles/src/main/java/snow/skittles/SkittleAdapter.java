@@ -20,6 +20,11 @@ import java.util.List;
 class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   private final List<BaseSkittle> skittles = new ArrayList<>();
+  private MainSkittleClickListener mainSkittleClickListener;
+
+  interface MainSkittleClickListener {
+    void onMainSkittleClick();
+  }
 
   /**
    * @param color color of the main skittle
@@ -51,6 +56,21 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     int previousSize = skittles.size();
     this.skittles.addAll(skittles);
     notifyItemRangeInserted(previousSize, this.skittles.size());
+  }
+
+  public void removeAllMiniSkittles() {
+    int prevSize = this.skittles.size();
+    BaseSkittle mainSkittle = this.skittles.get(0);
+    this.skittles.clear();
+    this.skittles.add(mainSkittle);
+    notifyItemRangeRemoved(1, prevSize);
+  }
+
+  public List<BaseSkittle> removeAllSkittles(List<BaseSkittle> skittles) {
+    int prevSize = this.skittles.size();
+    this.skittles.removeAll(skittles);
+    notifyItemRangeRemoved(1, prevSize);
+    return skittles;
   }
 
   public BaseSkittle removeSkittle(int position) {
@@ -113,10 +133,15 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     notifyItemChanged(index);
   }
 
-  class MainSkittleViewHolder extends SkittleViewHolder {
+  class MainSkittleViewHolder extends SkittleViewHolder implements View.OnClickListener {
 
     public MainSkittleViewHolder(View itemView) {
       super(itemView);
+      itemView.setOnClickListener(this);
+    }
+
+    @Override public void onClick(View v) {
+      if (mainSkittleClickListener != null) mainSkittleClickListener.onMainSkittleClick();
     }
   }
 
@@ -139,5 +164,9 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       text = (TextView) itemView.findViewById(R.id.tv_skittle);
       skittle = (FloatingActionButton) itemView.findViewById(R.id.skittle);
     }
+  }
+
+  public void setMainSkittleClickListener(MainSkittleClickListener mainSkittleClickListener) {
+    this.mainSkittleClickListener = mainSkittleClickListener;
   }
 }

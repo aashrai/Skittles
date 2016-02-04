@@ -14,7 +14,9 @@ public class SkittleDecorator extends RecyclerView.ItemDecoration {
       RecyclerView.State state) {
     int margin;
     SkittleAdapter adapter = (SkittleAdapter) parent.getAdapter();
-    switch (adapter.getItemViewType(parent.getChildAdapterPosition(view))) {
+    int position = parent.getChildAdapterPosition(view);
+    if (position == -1) return;
+    switch (adapter.getItemViewType(position)) {
       case Constants.MAIN_SKITTLE:
         margin =
             parent.getContext().getResources().getDimensionPixelOffset(R.dimen.fab_margin_bottom);
