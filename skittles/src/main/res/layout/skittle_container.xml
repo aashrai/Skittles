@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/recycler_view_width"
     android:layout_height="wrap_content"
+    android:id="@+id/skittle_container"
     tools:background="#ff0000"
     android:layout_gravity="end|bottom"
     android:baselineAligned="false"/>

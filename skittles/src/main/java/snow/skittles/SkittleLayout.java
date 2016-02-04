@@ -43,6 +43,7 @@ public class SkittleLayout extends CoordinatorLayout {
     skittleContainer.setLayoutManager(
         new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true));
     skittleContainer.setAdapter(skittleAdapter);
+    skittleContainer.setItemAnimator(new ItemAnimator());
     skittleContainer.addItemDecoration(new SkittleDecorator());
     addView(skittleContainer);
   }
