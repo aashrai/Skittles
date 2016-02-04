@@ -92,7 +92,7 @@ public void onSkittleClick(BaseSkittle skittle, int position) {
 ```
 Here the `position` does not include the mainSkittle and starts from `0`
 
-You can now create your very own Skittle you just have to implement the [BaseSkittle](skittles/src/main/java/snow/skittles/BaseSkittle.java), check [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) or [Skittle](skittles/src/main/java/snow/skittles/Skittle.java)
+You can now create your very own Skittle you just have to implement the [BaseSkittle](skittles/src/main/java/snow/skittles/BaseSkittle.java), check [TextSkittle](skittles/src/main/java/snow/skittles/TextSkittle.java) or [Skittle](skittles/src/main/java/snow/skittles/Skittle.java) for further reference
 
 ##Snackbar Support
 <img src="art/Snackbar.gif" width=196 height=350/>
