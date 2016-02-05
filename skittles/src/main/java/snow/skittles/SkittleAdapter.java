@@ -136,7 +136,7 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
   class MainSkittleViewHolder extends SkittleViewHolder implements View.OnClickListener {
     public MainSkittleViewHolder(View itemView) {
       super(itemView);
-      itemView.setOnClickListener(this);
+      itemView.findViewById(R.id.skittle).setOnClickListener(this);
     }
 
     @Override public void onClick(View v) {

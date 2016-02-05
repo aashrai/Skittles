@@ -5,10 +5,12 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import java.util.List;
@@ -17,24 +19,59 @@ import java.util.List;
  * Created by aashrai on 4/2/16.
  */
 @CoordinatorLayout.DefaultBehavior(SkittleContainer.FloatingLayoutBehavior.class)
-public class SkittleContainer extends RecyclerView {
+class SkittleContainer extends RecyclerView implements GestureDetector.OnGestureListener {
+
+  GestureDetectorCompat gestureDetector;
+  boolean isSkittlesAdded = false;
+
   public SkittleContainer(Context context) {
-    super(context);
+    this(context, null);
   }
 
   public SkittleContainer(Context context, @Nullable AttributeSet attrs) {
-    super(context, attrs);
+    this(context, attrs, 0);
+  }
+
+  public void setSkittlesAdded(boolean skittlesAdded) {
+    isSkittlesAdded = skittlesAdded;
   }
 
   public SkittleContainer(Context context, @Nullable AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
+    gestureDetector = new GestureDetectorCompat(context, this);
   }
 
-  @Override public boolean onTouchEvent(MotionEvent e) {
-    return false;
+  @Override public boolean onTouchEvent(MotionEvent event) {
+    return gestureDetector.onTouchEvent(event);
   }
 
   @Override public boolean onInterceptTouchEvent(MotionEvent e) {
+    return false;
+  }
+
+  @Override public boolean onDown(MotionEvent e) {
+    return isSkittlesAdded;
+  }
+
+  @Override public void onShowPress(MotionEvent e) {
+
+  }
+
+  @Override public boolean onSingleTapUp(MotionEvent e) {
+    return true;
+  }
+
+  @Override
+  public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+    return false;
+  }
+
+  @Override public void onLongPress(MotionEvent e) {
+
+  }
+
+  @Override
+  public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
     return false;
   }
 

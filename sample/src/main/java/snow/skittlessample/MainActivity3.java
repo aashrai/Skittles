@@ -21,7 +21,7 @@ public class MainActivity3 extends AppCompatActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     final SkittleBuilder skittleBuilder =
-        SkittleBuilder.newInstance((SkittleLayout) findViewById(R.id.skittleLayout));
+        SkittleBuilder.newInstance((SkittleLayout) findViewById(R.id.skittleLayout), false);
 
     skittleBuilder.addSkittle(Skittle.newInstance(ContextCompat.getColor(this, R.color.barratheon),
         ContextCompat.getDrawable(this, R.drawable.barratheon_icon)));

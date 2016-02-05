@@ -11,10 +11,13 @@ import java.util.List;
  * Created by aashrai on 3/2/16.
  */
 public class SkittleBuilder
-    implements SkittleBuilder_Factory, SkittleAdapter.OnSkittleClickListener {
+    implements SkittleBuilder_Factory, SkittleAdapter.OnSkittleClickListener,
+    SkittleLayout.OnSkittleContainerClickListener {
 
   private final SkittleAdapter skittleAdapter;
+  private final SkittleContainer skittleContainer;
   private final List<BaseSkittle> skittles;
+  private final boolean closeOnTap;
   boolean miniSkittlesAdded = false;
   OnSkittleClickListener skittleClickListener;
 
@@ -24,14 +27,23 @@ public class SkittleBuilder
     void onMainSkittleClick();
   }
 
-  private SkittleBuilder(SkittleLayout skittleLayout) {
+  private SkittleBuilder(SkittleLayout skittleLayout, boolean closeOnTap) {
+    this.closeOnTap = closeOnTap;
     this.skittleAdapter = skittleLayout.getSkittleAdapter();
     this.skittleAdapter.setMainSkittleClickListener(this);
+    this.skittleContainer = skittleLayout.getSkittleContainer();
+    skittleLayout.setSkittleContainerClickListener(this);
     skittles = new ArrayList<>();
   }
 
-  public static SkittleBuilder newInstance(SkittleLayout skittleLayout) {
-    return new SkittleBuilder(skittleLayout);
+  /**
+   * Returns a new instance of {@link SkittleBuilder}
+   *
+   * @param skittleLayout The root container of your layouts
+   * @param closeOnTap Should the skittle menu be closed on tap or other touch events on the screen
+   */
+  public static SkittleBuilder newInstance(SkittleLayout skittleLayout, boolean closeOnTap) {
+    return new SkittleBuilder(skittleLayout, closeOnTap);
   }
 
   @Override public void addSkittle(@NonNull BaseSkittle skittle) {
@@ -62,6 +74,7 @@ public class SkittleBuilder
       skittleAdapter.removeAllMiniSkittles();
     }
     miniSkittlesAdded = !miniSkittlesAdded;
+    skittleContainer.setSkittlesAdded(closeOnTap && miniSkittlesAdded);
     if (skittleClickListener != null) skittleClickListener.onMainSkittleClick();
   }
 
@@ -76,5 +89,9 @@ public class SkittleBuilder
       //Subtract the position to make it start from the first mini skittle instead of the main skittle
       skittleClickListener.onSkittleClick(skittle, position - 1);
     }
+  }
+
+  @Override public void onSkittleContainerClick() {
+    if (miniSkittlesAdded) onMainSkittleClick();
   }
 }

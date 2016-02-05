@@ -10,15 +10,25 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
  * Created by aashrai on 2/2/16.
  */
-public class SkittleLayout extends CoordinatorLayout {
+public class SkittleLayout extends CoordinatorLayout implements View.OnTouchListener {
 
   SkittleContainer skittleContainer;
+  OnSkittleContainerClickListener listener;
+
+  public SkittleContainer getSkittleContainer() {
+    return skittleContainer;
+  }
+
+  interface OnSkittleContainerClickListener {
+    void onSkittleContainerClick();
+  }
 
   public SkittleLayout(Context context) {
     super(context);
@@ -47,7 +57,7 @@ public class SkittleLayout extends CoordinatorLayout {
         new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true));
     skittleContainer.setAdapter(skittleAdapter);
     skittleContainer.setItemAnimator(new ItemAnimator());
-    //skittleContainer.addItemDecoration(new SkittleDecorator());
+    skittleContainer.setOnTouchListener(this);
     addView(skittleContainer);
   }
 
@@ -93,5 +103,17 @@ public class SkittleLayout extends CoordinatorLayout {
     a.recycle();
 
     return color;
+  }
+
+  public void setSkittleContainerClickListener(OnSkittleContainerClickListener listener) {
+    this.listener = listener;
+  }
+
+  @Override public boolean onTouch(View v, MotionEvent event) {
+    //SkittleContainer accepts only a singleTapUp event
+    boolean singleTapUp = skittleContainer.gestureDetector.onTouchEvent(event);
+    if(singleTapUp)
+      listener.onSkittleContainerClick();
+    return singleTapUp;
   }
 }
