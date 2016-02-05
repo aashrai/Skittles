@@ -39,16 +39,13 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnTouchList
     TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.SkittleLayout);
     int color;
     Drawable drawable;
-    try {
-      color = array.getResourceId(R.styleable.SkittleLayout_mainSkittleColor,
-          fetchAccentColor(getContext()));
-      drawable = array.getDrawable(R.styleable.SkittleLayout_mainSkittleIcon);
-      if (drawable == null) {
-        drawable = ContextCompat.getDrawable(context, R.drawable.ic_add_white_18dp);
-      }
-    } finally {
-      array.recycle();
+    color = array.getResourceId(R.styleable.SkittleLayout_mainSkittleColor,
+        fetchAccentColor(getContext()));
+    drawable = array.getDrawable(R.styleable.SkittleLayout_mainSkittleIcon);
+    if (drawable == null) {
+      drawable = ContextCompat.getDrawable(context, R.drawable.ic_add_white_18dp);
     }
+    array.recycle();
 
     skittleContainer = (SkittleContainer) LayoutInflater.from(context)
         .inflate(R.layout.skittle_container, this, false);
@@ -112,8 +109,7 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnTouchList
   @Override public boolean onTouch(View v, MotionEvent event) {
     //SkittleContainer accepts only a singleTapUp event
     boolean singleTapUp = skittleContainer.gestureDetector.onTouchEvent(event);
-    if(singleTapUp)
-      listener.onSkittleContainerClick();
+    if (singleTapUp) listener.onSkittleContainerClick();
     return singleTapUp;
   }
 }
