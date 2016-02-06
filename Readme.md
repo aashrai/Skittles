@@ -44,7 +44,8 @@ Declare a [SkittleBuilder](skittles/src/main/java/snow/skittles/SkittleBuilder.j
 
 ```java
 SkittleLayout skittleLayout = (SkittleLayout) findViewById(R.id.skittleLayout);
-SkittleBuilder skittleBuilder = SkittleBuilder.newInstance((SkittleLayout) findViewById(R.id.skittleLayout));
+//Pass false as the second param if you don't want the menu to be closed on screen tap
+SkittleBuilder skittleBuilder = SkittleBuilder.newInstance((SkittleLayout) findViewById(R.id.skittleLayout), true);
 
 ```
 
