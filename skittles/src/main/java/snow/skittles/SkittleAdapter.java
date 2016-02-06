@@ -100,6 +100,7 @@ class SkittleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
   private void configureTextSkittle(TextSkittleViewHolder holder, int position) {
     TextSkittle textSkittle = (TextSkittle) skittles.get(position);
     holder.text.setText(textSkittle.getText());
+    holder.text.setTextColor(textSkittle.getTextColor());
     holder.text.setBackgroundColor(textSkittle.getTextBackground());
     holder.skittle.setBackgroundTintList(ColorStateList.valueOf(textSkittle.getColor()));
     holder.skittle.setImageDrawable(textSkittle.getIcon());

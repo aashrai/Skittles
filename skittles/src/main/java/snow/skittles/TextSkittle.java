@@ -1,5 +1,6 @@
 package snow.skittles;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 
@@ -12,12 +13,15 @@ public class TextSkittle implements BaseSkittle {
   private @ColorInt int color;
   private Drawable icon;
   private @ColorInt int textBackground;
+  private @ColorInt int textColor;
 
-  private TextSkittle(String text, int color, Drawable drawable, int textBackground) {
+  private TextSkittle(String text, int color, Drawable drawable, int textBackground,
+      int textColor) {
     this.text = text;
     this.color = color;
     this.icon = drawable;
     this.textBackground = textBackground;
+    this.textColor = textColor;
   }
 
   public static class Builder {
@@ -25,12 +29,14 @@ public class TextSkittle implements BaseSkittle {
     private final @ColorInt int color;
     private final Drawable icon;
     private @ColorInt int textBackground;
+    private @ColorInt int textColor;
 
     public Builder(String text, int color, Drawable drawable) {
       this.text = text;
       this.color = color;
       icon = drawable;
-      textBackground = 0x7f0b0014;//light background
+      textBackground = Color.parseColor("#ffffff");
+      textColor = Color.parseColor("#000000");
     }
 
     public Builder setTextBackground(@ColorInt int textBackground) {
@@ -38,13 +44,18 @@ public class TextSkittle implements BaseSkittle {
       return this;
     }
 
+    public Builder setTextColor(@ColorInt int textColor) {
+      this.textColor = textColor;
+      return this;
+    }
+
     public TextSkittle build() {
-      return new TextSkittle(text, color, icon, textBackground);
+      return new TextSkittle(text, color, icon, textBackground, textColor);
     }
   }
 
-  public void setTextBackground(@ColorInt int color) {
-    textBackground = color;
+  public @ColorInt int getTextColor() {
+    return textColor;
   }
 
   @Override public void setIconDrawable(Drawable drawable) {
