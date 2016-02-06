@@ -39,8 +39,8 @@ public class SkittleLayout extends CoordinatorLayout implements View.OnTouchList
     TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.SkittleLayout);
     int color;
     Drawable drawable;
-    color = array.getResourceId(R.styleable.SkittleLayout_mainSkittleColor,
-        fetchAccentColor(getContext()));
+    color =
+        array.getColor(R.styleable.SkittleLayout_mainSkittleColor, fetchAccentColor(getContext()));
     drawable = array.getDrawable(R.styleable.SkittleLayout_mainSkittleIcon);
     if (drawable == null) {
       drawable = ContextCompat.getDrawable(context, R.drawable.ic_add_white_18dp);
