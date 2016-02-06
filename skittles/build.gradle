@@ -15,7 +15,7 @@ ext {
   siteUrl = 'https://github.com/aashrairavooru/Skittles'
   gitUrl = 'https://github.com/aashrairavooru/Skittles.git'
 
-  libraryVersion = '4.1.0'
+  libraryVersion = '4.1.1'
 
   developerId = 'aashrairavooru'
   developerName = 'Aashrai Ravooru'
