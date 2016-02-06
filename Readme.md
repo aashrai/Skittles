@@ -108,7 +108,7 @@ Snackbar.make(skittleLayout.getSkittleContainer(), "Skittle Pressed", Snackbar.L
 ##Gradle
 ```groovy
 dependencies{
-compile 'com.rlj.library:skittles:4.0.0'
+compile 'com.rlj.library:skittles:4.1.1'
 }
 ```
 
